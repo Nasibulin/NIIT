@@ -7,7 +7,7 @@
  */
 public class Collatz {
     static int maxLength;
-    static int maxNum;
+    static int maxSeqNum;
     static final int MAX_NUM = 1000000;
 
     public static void collatz(long n) {
@@ -27,7 +27,7 @@ public class Collatz {
     public static void main(String[] args) {
         //int N = Integer.parseInt(args[0]);
         int L = maxLength;
-        int N = maxNum;
+        int N = maxSeqNum;
         for (int i = 1; i <= MAX_NUM; i++) {
             collatz(i);
             if (Collatz.maxLength > L) {
