@@ -13,7 +13,7 @@ public class ExpandRange {
         while (s.indexOf("-",startIndex)!=-1)
         {
             System.out.println(s.indexOf("-",startIndex));
-            startIndex=s.indexOf("-",startIndex)+1;
+            startIndex=s.indexOf("-", startIndex)+1;
         }
 
     }
