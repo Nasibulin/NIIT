@@ -37,7 +37,7 @@ public class CollapseRange {
                     s += "" + i;
                 } else if ((i + 1 == j) & (j + 1 == k)) {
                     s += "";
-                } else if ((i + 1 == j) & (j + 1 != k) & (j != k)) {
+                } else if ((i + 1 == j) & (j + 1 != k)) {
                     s += "-" + j;
                 } else if ((i + 1 != j) & (j + 1 != k)) {
                     s += "," + j;
@@ -50,11 +50,10 @@ public class CollapseRange {
             if (o.end()==line.length() & j+1==k) s+="-"+k;
             if (o.end()==line.length() & j+1!=k) s+=","+k;
             m.appendReplacement(result, s);
-            //System.out.println(result.toString());
+            System.out.println(result.toString());
         }
         //System.out.println(result.toString());
         //m.appendTail(result);
         System.out.println(result.toString());
-
     }
 }
