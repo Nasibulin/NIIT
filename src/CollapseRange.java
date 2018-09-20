@@ -32,7 +32,7 @@ public class CollapseRange {
             String s = "";
             if (n.find(m.end()) & o.find(n.end())) {
             //    String s = "";
-                System.out.println(i + "\t" + j + "\t " + k);
+                //System.out.println(i + "\t" + j + "\t " + k);
                 if ((i == j) & (j == k)) {
                     s += "" + i;
                 } else if ((i + 1 == j) & (j + 1 == k)) {
@@ -50,7 +50,7 @@ public class CollapseRange {
             if (o.end()==line.length() & j+1==k) s+="-"+k;
             if (o.end()==line.length() & j+1!=k) s+=","+k;
             m.appendReplacement(result, s);
-            System.out.println(result.toString());
+            //System.out.println(result.toString());
         }
         //System.out.println(result.toString());
         //m.appendTail(result);
