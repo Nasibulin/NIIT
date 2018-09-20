@@ -11,8 +11,8 @@ import java.util.regex.Pattern;
 public class CollapseRange {
     public static void main(String args[]) {
         // String to be scanned to find the pattern.
-        //String line = "1,2,3,4,5,6,7,8,9,10,11,12,14,17,19,20,21,22,23,25,26,30,35,41";
-        String line = "1,2,3,4,5,6,7,8,9,10,11,12,15,16,17,20";
+        String line = "1,2,3,4,5,6,7,8,9,10,11,12,14,17,19,20,21,22,23,25,26,30,35,41";
+        //String line = "1,2,3,4,5,6,7,8,9,10,11,12,15,16,17,20";
 
         String pattern = "(\\d+)(,*)";
 
