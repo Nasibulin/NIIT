@@ -11,8 +11,10 @@ import java.util.regex.Pattern;
 public class CollapseRange {
     public static void main(String args[]) {
         // String to be scanned to find the pattern.
-        String line = "1,2,3,4,5,6,7,8,9,10,11,12,14,17,19,20,21,22,23,25,26,30,35,41";
-        String pattern = "(\\d+)(,{1})";
+        //String line = "1,2,3,4,5,6,7,8,9,10,11,12,14,17,19,20,21,22,23,25,26,30,35,41";
+        String line = "1,2,3,4,5,6,7,8,9,10,11,12,15,16,17,20";
+
+        String pattern = "(\\d+)(,*)";
 
         // Create a Pattern object
         Pattern r = Pattern.compile(pattern);
@@ -28,21 +30,30 @@ public class CollapseRange {
             int j = Integer.parseInt(n.group(1));
             int k = Integer.parseInt(o.group(1));
             String s = "";
-            //System.out.println(m.end());
-            //System.out.println("k="+k);
-            //System.out.println("k=" + k);
-            if (o.find(n.end())& n.find(m.end())) {
+            if (n.find(m.end()) & o.find(n.end())) {
+            //    String s = "";
                 System.out.println(i + "\t" + j + "\t " + k);
-                if ((j == i + 1)&(k == j + 1)) m.appendReplacement(result, "");
-                else {
-                    m.appendReplacement(result, j + ",");
+                if ((i == j) & (j == k)) {
+                    s += "" + i;
+                } else if ((i + 1 == j) & (j + 1 == k)) {
+                    s += "";
+                } else if ((i + 1 == j) & (j + 1 != k) & (j != k)) {
+                    s += "-" + j;
+                } else if ((i + 1 != j) & (j + 1 != k)) {
+                    s += "," + j;
+                } else if ((i + 1 != j) & (j + 1 == k)) {
+                    s += "," + j;
                 }
+            //    m.appendReplacement(result, s);
             }
-            //System.out.println(result.toString());
 
+            if (o.end()==line.length() & j+1==k) s+="-"+k;
+            if (o.end()==line.length() & j+1!=k) s+=","+k;
+            m.appendReplacement(result, s);
+            //System.out.println(result.toString());
         }
         //System.out.println(result.toString());
-        m.appendTail(result);
+        //m.appendTail(result);
         System.out.println(result.toString());
 
     }
