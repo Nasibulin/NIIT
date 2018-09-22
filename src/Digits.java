@@ -17,16 +17,20 @@ public class Digits {
     static byte[][] digits = new byte[10][90];
 
     public static void main(String[] args) throws IOException {
-        byte[] byteArray = args[0].getBytes();
+        String s = args[0];
+        char[] charArray = s.toCharArray();
         byte sym;
         FileToArray();
-       // System.out.println(Arrays.toString(byteArray));
         for (int row = 0; row < DIG_HEIGHT; row++) {
             //for (int column=0; column < byteArray.length; column++) {
-            for (int column = 0; column < DIG_QTY; column++) {
+            for (int column = 0; column < s.length(); column++) {
                 for (int pos = 0; pos < DIG_WIDTH; pos++) {
-                    sym = digits[column][pos+row + row * DIG_WIDTH];
-                    if (sym != 10 & sym != 13) {System.out.print((char) sym);}
+                    int k = Character.getNumericValue(charArray[column]);
+                    //System.out.println(charArray[column]);
+                    sym = digits[k][pos + row + row * DIG_WIDTH];
+                    if (sym != 10 & sym != 13) {
+                        System.out.print((char)sym);
+                    }
 //                    else if (sym == 10 || sym == 13) System.out.print((char)32);
 //System.out.println(row+" "+column+" "+pos);
 
