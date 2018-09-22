@@ -16,7 +16,7 @@ class ReadBytesFromFile {
         byte[][] digit = new byte[10][72];
         for (int i = 0; i < 10; i++) {
             File file = null;
-            FileInputStream fileStream = new FileInputStream(file = new File("C:\\Users\\Konstantin\\IdeaProjects\\NIIT\\src\\" + i));
+            FileInputStream fileStream = new FileInputStream(file = new File(System.getProperty("user.dir")+"\\src\\" + i));
 
             // Instantiate array
             byte[] arr = new byte[(int) file.length()];
