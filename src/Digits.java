@@ -11,21 +11,23 @@ import java.io.IOException;
  */
 public class Digits {
     static final int DIG_HEIGHT = 10;
-    static final int DIG_WIDTH = 7;
+    static final int DIG_WIDTH = 8;
     static final int DIG_QTY = 10;
 
-    static byte[][] digits = new byte[10][70];
+    static byte[][] digits = new byte[10][90];
 
     public static void main(String[] args) throws IOException {
-        int length = args.length;
+        byte[] byteArray = args[0].getBytes();
         byte sym;
         FileToArray();
-        //System.out.println(Arrays.deepToString(digits));
+       // System.out.println(Arrays.toString(byteArray));
         for (int row = 0; row < DIG_HEIGHT; row++) {
-            for (int pos = 0; pos < DIG_WIDTH; pos++) {
-                for (int column = 0; column < DIG_QTY; column++) {
-                    sym = digits[row][pos + column * (DIG_WIDTH)];
-                    if (sym != 10 & sym != 13) System.out.print((char) sym);
+            //for (int column=0; column < byteArray.length; column++) {
+            for (int column = 0; column < DIG_QTY; column++) {
+                for (int pos = 0; pos < DIG_WIDTH; pos++) {
+                    sym = digits[column][pos+row + row * DIG_WIDTH];
+                    if (sym != 10 & sym != 13) {System.out.print((char) sym);}
+//                    else if (sym == 10 || sym == 13) System.out.print((char)32);
 //System.out.println(row+" "+column+" "+pos);
 
                 }

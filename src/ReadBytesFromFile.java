@@ -13,7 +13,7 @@ class ReadBytesFromFile {
     public static void main(String args[]) throws Exception {
         // getBytes from anyWhere
         // I'm getting byte array from File
-        byte[][] digit = new byte[10][70];
+        byte[][] digit = new byte[10][72];
         for (int i = 0; i < 10; i++) {
             File file = null;
             FileInputStream fileStream = new FileInputStream(file = new File("C:\\Users\\Konstantin\\IdeaProjects\\NIIT\\src\\" + i));
