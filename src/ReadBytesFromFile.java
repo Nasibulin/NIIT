@@ -1,4 +1,6 @@
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.Arrays;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,20 +13,24 @@ class ReadBytesFromFile {
     public static void main(String args[]) throws Exception {
         // getBytes from anyWhere
         // I'm getting byte array from File
-        for (int i=0;i<10;i++) {
-        File file = null;
-        FileInputStream fileStream = new FileInputStream(file = new File("C:\\Users\\Konstantin\\IdeaProjects\\NIIT\\src\\"+i));
+        byte[][] digit = new byte[10][70];
+        for (int i = 0; i < 10; i++) {
+            File file = null;
+            FileInputStream fileStream = new FileInputStream(file = new File("C:\\Users\\Konstantin\\IdeaProjects\\NIIT\\src\\" + i));
 
-        // Instantiate array
-        byte[][] arr = new byte[10][(int) file.length()];
+            // Instantiate array
+            byte[] arr = new byte[(int) file.length()];
 
-        // read All bytes of File stream
-        fileStream.read(arr[i], 0, arr.length);
+            // read All bytes of File stream
+            fileStream.read(arr, 0, arr.length);
+            System.arraycopy(arr, 0, digit[i], 0, arr.length);
+            System.out.println(Arrays.toString(digit[i]));
 
-        for (int X : arr[i]) {
-            System.out.print((char) X);
+//            for (byte X : arr) {
+//                System.out.print((char) X);
+//            }
+//            System.out.println("");
         }
-            System.out.println("");
-        }
+
     }
 }
