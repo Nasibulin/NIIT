@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Arrays;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,13 +10,28 @@ import java.util.Arrays;
  * To change this template use File | Settings | File Templates.
  */
 public class Digits {
+    static final int DIG_HEIGHT = 10;
+    static final int DIG_WIDTH = 7;
+    static final int DIG_QTY = 10;
+
     static byte[][] digits = new byte[10][70];
 
     public static void main(String[] args) throws IOException {
-
+        int length = args.length;
+        byte sym;
         FileToArray();
-        System.out.println(Arrays.deepToString(digits));
+        //System.out.println(Arrays.deepToString(digits));
+        for (int row = 0; row < DIG_HEIGHT; row++) {
+            for (int pos = 0; pos < DIG_WIDTH; pos++) {
+                for (int column = 0; column < DIG_QTY; column++) {
+                    sym = digits[row][pos + column * (DIG_WIDTH)];
+                    if (sym != 10 & sym != 13) System.out.print((char) sym);
+//System.out.println(row+" "+column+" "+pos);
 
+                }
+            }
+            System.out.println();
+        }
     }
 
     static void FileToArray() throws IOException {
