@@ -24,7 +24,7 @@ public class CollapseRange {
         Matcher n = r.matcher(line);
         Matcher o = r.matcher(line);
         StringBuffer result = new StringBuffer();
-
+        int check = 0;
         while (m.find() & n.find() & o.find()) {
             int i = Integer.parseInt(m.group(1));
             int j = Integer.parseInt(n.group(1));
@@ -37,17 +37,23 @@ public class CollapseRange {
                     s += "" + i;
                 } else if ((i + 1 == j) & (j + 1 == k)) {
                     s += "";
-                } else if ((i + 1 == j) & (j + 1 != k)) {
+                } else if ((i + 1 == j) & (j + 1 != k) & (check + 1 == i)) {
                     s += "-" + j;
+                } else if ((i + 1 == j) & (j + 1 != k) & (check + 1 != i)) {
+                    s += "," + j;
                 } else if (i + 1 != j) {
                     s += "," + j;
                 }
+                //System.out.println(i+" "+j+" "+k+" "+check);
+
                 //    m.appendReplacement(result, s);
             }
 
             if (o.end() == line.length() & j + 1 == k) s += "-" + k;
             if (o.end() == line.length() & j + 1 != k) s += "," + k;
             m.appendReplacement(result, s);
+            check = i;
+
             //System.out.println(result.toString());
         }
         //System.out.println(result.toString());
