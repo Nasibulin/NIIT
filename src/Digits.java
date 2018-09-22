@@ -12,7 +12,7 @@ import java.io.IOException;
 public class Digits {
     static final int DIG_HEIGHT = 10;
     static final int DIG_WIDTH = 8;
-    static final int DIG_QTY = 10;
+    //static final int DIG_QTY = 10;
 
     static byte[][] digits = new byte[10][90];
 
@@ -25,11 +25,11 @@ public class Digits {
             //for (int column=0; column < byteArray.length; column++) {
             for (int column = 0; column < s.length(); column++) {
                 for (int pos = 0; pos < DIG_WIDTH; pos++) {
-                    int k = Character.getNumericValue(charArray[column]);
+                    int k = Character.getNumericValue(charArray[column]);// default cast not work
                     //System.out.println(charArray[column]);
-                    sym = digits[k][pos + row + row * DIG_WIDTH];
+                    sym = digits[k][pos + row * (DIG_WIDTH + 1)];
                     if (sym != 10 & sym != 13) {
-                        System.out.print((char)sym);
+                        System.out.print((char) sym); // cast must be explicit
                     }
 //                    else if (sym == 10 || sym == 13) System.out.print((char)32);
 //System.out.println(row+" "+column+" "+pos);
