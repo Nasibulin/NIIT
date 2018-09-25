@@ -6,4 +6,14 @@
  * To change this template use File | Settings | File Templates.
  */
 public class Automata {
+    int cash;
+    String[] menu;
+    int prices;
+    STATES state;
+
+    public Automata() {
+
+    }
+
+
 }

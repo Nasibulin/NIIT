@@ -6,4 +6,12 @@
  * To change this template use File | Settings | File Templates.
  */
 public enum STATES {
+
+    OFF,
+    WAIT,
+    ACCEPT,
+    CHECK,
+    COOK
+
+
 }
