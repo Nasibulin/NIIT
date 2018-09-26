@@ -1,17 +1,11 @@
+package javalab2;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Nasibulin
- * Date: 25.09.18
- * Time: 14:20
+ * Date: 26.09.18
+ * Time: 14:29
  * To change this template use File | Settings | File Templates.
  */
-public enum STATES {
-
-    OFF,
-    WAIT,
-    ACCEPT,
-    CHECK,
-    COOK
-
-
+public interface State {
 }

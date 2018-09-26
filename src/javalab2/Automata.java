@@ -1,3 +1,5 @@
+package javalab2;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Nasibulin
