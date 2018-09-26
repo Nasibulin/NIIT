@@ -8,6 +8,13 @@ package javalab2;
  * To change this template use File | Settings | File Templates.
  */
 public class OffState implements State {
+
+    Automata automat;
+
+    public OffState(Automata automat){
+        this.automat=automat;
+    }
+
     @Override
     public void on() {
         //To change body of implemented methods use File | Settings | File Templates.
