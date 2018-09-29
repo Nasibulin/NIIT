@@ -1,18 +1,20 @@
+package javalab1;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Nasibulin
- * Date: 18.09.18
- * Time: 7:48
+ * Date: 17.09.18
+ * Time: 16:16
  * To change this template use File | Settings | File Templates.
  */
-public class RegexMatches {
+public class ExpandRange {
 
     public static void main( String args[] ) {
         // String to be scanned to find the pattern.
-        String line = "1,2,3,4-12,14,17,19-23,25";
+        String line = "1,2,3,4-12,14,17,19-23,25,26,30,35,41";
         String pattern = "(\\d+)(-{1})(\\d+)(,{1})";
 
         // Create a Pattern object
@@ -31,14 +33,12 @@ public class RegexMatches {
                 k++;
             }
             m.appendReplacement(result,s);
-            //System.out.println("Found value: " + m.group(0) );
-            //System.out.println("Found value: " + m.group(1) );
-            //System.out.println("Found value: " + m.group(2) );
-            //System.out.println("Found value: " + m.group(3) );
         }
-
+        //System.out.println(result.toString());
         m.appendTail(result);
         System.out.println(result.toString());
 
-        }
     }
+
+
+}
