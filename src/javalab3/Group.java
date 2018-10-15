@@ -1,5 +1,8 @@
 package javalab3;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Nasibulin
@@ -8,4 +11,18 @@ package javalab3;
  * To change this template use File | Settings | File Templates.
  */
 public class Group {
+    private String title;
+    private Student head;
+    private int num;
+    private List<Student> students = new ArrayList();
+
+    public Group(String title) {
+
+        this.title = title;
+    }
+
+    public void addStudent(Student student) {
+        students.add(student);
+        num++;
+    }
 }
