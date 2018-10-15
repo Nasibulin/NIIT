@@ -25,7 +25,7 @@ public class Dekanat {
     public static final String GROUPS_PATH = System.getProperty("user.dir") + "/db/" + GROUPS_FILE;
     public static final String STUDENTS_PATH = System.getProperty("user.dir") + "/db/" + STUDENTS_FILE;
 
-    private List<Student> stream = new ArrayList();
+    private List<Student> studentStream = new ArrayList();
     private List<Group> groups = new ArrayList();
 
     public void importStream() {
@@ -46,14 +46,11 @@ public class Dekanat {
                 JSONObject studentData = (JSONObject) studentArray.get(i);
                 Integer id = ((Long) studentData.get("ID")).intValue();
                 String fio = (String) studentData.get("STUDENT");
-
-                System.out.println(id);
-                System.out.println(fio);
-                stream.add(new Student(id, fio));
+                studentStream.add(new Student(id, fio));
                 i++;
 
             }
-            //System.out.println(stream);
+            //System.out.println(studentStream);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
