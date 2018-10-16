@@ -106,6 +106,6 @@ public class Group {
     }
 
     public void clear() {
-        this.students.clear();
+        students.clear();
     }
 }

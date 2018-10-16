@@ -78,17 +78,21 @@ public class Dekanat {
         }
     }
 
-    void arrangeGroups() {
-        Iterator<Student> it = students.iterator();
-        for (Group group:groups){
-            group.clear();
-            for(int i=0; i<students.size()/groups.size(); i++) {
-                if (!it.hasNext())
-                    return;
-                group.addStudent(it.next());
-                }
+    //Распределение студентов по группам
+    public void arrangeGroups(){
+        int pointer = 0;
+        for (Student student:students
+                ) {
+            if (pointer == groups.size())
+                pointer = 0;
+
+            student.setGroup(groups.get(pointer));
+            groups.get(pointer).addStudent(student);
+
+            pointer++;
         }
     }
+
 
     void addRandomMarks(int count) {
         Random rand = new Random();
