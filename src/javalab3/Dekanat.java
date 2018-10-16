@@ -86,6 +86,7 @@ public class Dekanat {
                 if (!it.hasNext())
                     return;
                 group.addStudent(it.next());
+
                 }
         }
     }
