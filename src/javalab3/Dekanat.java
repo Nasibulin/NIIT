@@ -99,7 +99,7 @@ public class Dekanat {
     }
 
     public List<Group> getGroups() {
-        return this.groups;
+        return groups;
     }
 
     private Group searchGroup(String title) {
@@ -109,6 +109,7 @@ public class Dekanat {
         }
         return null;
     }
+
 
     private Student searchStudent(int id) {
 
