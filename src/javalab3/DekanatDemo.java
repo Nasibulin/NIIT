@@ -22,7 +22,7 @@ public class DekanatDemo {
         System.out.println(dek.getGroups().get(2).getNum());
         dek.getGroups().get(2).headElection();
         System.out.println(dek.getGroups().get(0).getStudentById(26).getMarks());
-        System.out.println(dek.getGroups().get(0).getStudentById(26).getGroup());
+        System.out.println(dek.getGroups().get(0).getStudentById(26).num);
         System.out.println(dek.getGroups().get(0).getStudentById(26));
 
     }

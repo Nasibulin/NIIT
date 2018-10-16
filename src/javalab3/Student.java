@@ -14,9 +14,9 @@ import java.util.NoSuchElementException;
 public class Student {
     private int id;
     private String fio;
-    private Group group;
+    public Group group;
     private List<Integer> marks = new ArrayList();
-    private int num;
+    public int num;
 
     public Student(int id, String fio) {
         this.id = id;
