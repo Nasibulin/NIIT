@@ -33,14 +33,14 @@ public class Student {
         try {
             avgMark = marks.stream().mapToInt(e -> e).average().getAsDouble();
         } catch (NoSuchElementException ex) {
-            ex.printStackTrace();
-            System.err.println("У студента еще нет оценок");
+            //ex.printStackTrace();
+            System.err.println("У студента еще нет оценок.");
         }
         return avgMark;
     }
 
-    public void addStudent(Group group) {
-        group.addStudent(this);
+    public void setGroup(Group group) {
+        this.group=group;
     }
 
     public String getFio() {
@@ -55,6 +55,10 @@ public class Student {
         return num;
     }
 
+    public Group getGroup(){
+        return group;
+    }
+
     public List<Integer> getMarks() {
         return marks;
     }
@@ -62,4 +66,5 @@ public class Student {
     public String toString() {
         return fio;
     }
+
 }

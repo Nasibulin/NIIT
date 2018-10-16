@@ -12,20 +12,23 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class Group {
+    private int id;
     private String title;
     private Student head;
     private int num;
     private List<Student> students = new ArrayList();
 
-    public Group(String title) {
+    public Group(int id, String title) {
+        this.id = id;
         this.title = title;
     }
 
-    public Group(String title, List<Student> students) {
-        this.title = title;
-        this.num = students.size();
-        this.students = students;
-    }
+//    public Group(int id, String title, List<Student> students) {
+//        this.id = id;
+//        this.title = title;
+//        this.num = students.size();
+//        this.students = students;
+//    }
 
     public void addStudent(Student student) {
         students.add(student);
@@ -41,24 +44,22 @@ public class Group {
 
     }
 
-    public boolean searchStudentById(int id) {
-        boolean result = false;
+    public Student getStudentById(int id) {
         for (Student student : students) {
             if (id == student.getId()) {
-                result = true;
+                return student;
             }
         }
-        return result;
+        return null;
 
     }
 
-    public boolean searchStudentByFio(String fio) {
-        boolean result = false;
+    public Student getStudentByFio(String fio) {
         for (Student student : students) {
             if (fio.equals(student.getFio()))
-                result = true;
+                return student;
         }
-        return result;
+        return null;
 
     }
 
@@ -74,18 +75,36 @@ public class Group {
     }
 
     protected void headElection() {
-        Student head = students.get(0);
-        for (Student student : students) {
-            head = (student.avgMark() >= head.avgMark() ? student : head);
+        try {
+            Student head = students.get(0);
+            for (Student student : students) {
+                head = (student.avgMark() >= head.avgMark() ? student : head);
+            }
+            this.head = head;
+        } catch (IndexOutOfBoundsException ex) {
+            //ex.printStackTrace();
+            System.err.println("Группа не сформирована. Добавьте студентов.");
         }
-        this.head = head;
 
     }
-    public Student getHead(){
+
+    public Student getHead() {
         return head;
     }
 
-    public String toString(){
+    public String getTitle(){
         return title;
+    }
+
+    public int getNum(){
+        return num;
+    }
+
+    public String toString() {
+        return title;
+    }
+
+    public void clear() {
+        this.students.clear();
     }
 }
