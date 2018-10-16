@@ -2,7 +2,6 @@ package javalab3;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,7 +15,7 @@ public class Group {
     private String title;
     private Student head;
     private int num;
-    private List<Student> students = new ArrayList();
+    private ArrayList<Student> students=new ArrayList<>();
 
     public Group(int id, String title) {
         this.id = id;
@@ -94,6 +93,10 @@ public class Group {
 
     public String getTitle(){
         return title;
+    }
+
+    public int getId(){
+        return id;
     }
 
     public int getNum(){

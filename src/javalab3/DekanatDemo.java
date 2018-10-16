@@ -17,13 +17,13 @@ public class DekanatDemo {
         System.out.println(dek.getGroups().get(0));
         System.out.println(dek.getGroups().get(1));
         System.out.println(dek.getGroups().get(2));
-        System.out.println(dek.getGroups().get(0).getNum());
-        System.out.println(dek.getGroups().get(1).getNum());
-        System.out.println(dek.getGroups().get(2).getNum());
+        System.out.println(dek.getGroups().get(0).getId());
+        System.out.println(dek.getGroups().get(1).getId());
+        System.out.println(dek.getGroups().get(2).getId());
         dek.getGroups().get(2).headElection();
-        System.out.println(dek.getGroups().get(0).getStudentById(26).getMarks());
-        System.out.println(dek.getGroups().get(0).getStudentById(26).num);
         System.out.println(dek.getGroups().get(0).getStudentById(26));
+        System.out.println(dek.getGroups().get(0).getStudentById(26));
+        System.out.println(dek.getGroups().get(0).getStudentById(26).getGroup());
 
     }
 }

@@ -7,10 +7,7 @@ import org.json.simple.parser.ParseException;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -79,17 +76,34 @@ public class Dekanat {
     }
 
     void arrangeGroups() {
-        Iterator<Student> it = students.iterator();
+        ListIterator<Student> it = students.listIterator();
         for (Group group:groups){
             group.clear();
             for(int i=0; i<students.size()/groups.size(); i++) {
                 if (!it.hasNext())
                     return;
                 group.addStudent(it.next());
-
                 }
         }
     }
+
+    void distributeStudents(){
+        int pointer = 0;
+        for (Student student:students
+                ) {
+            if (pointer == groups.size())
+                pointer = 0;
+            studentRegistration(student, groups.get(pointer));
+            pointer++;
+        }
+    }
+
+    void studentRegistration(Student student, Group group) {
+        student.setGroup(group);
+        group.addStudent(student);
+    }
+
+
 
     void addRandomMarks(int count) {
         Random rand = new Random();
@@ -106,6 +120,14 @@ public class Dekanat {
     private Group searchGroup(String title) {
         for (Group group : groups) {
             if (group.getTitle().equals(title))
+                return group;
+        }
+        return null;
+    }
+
+    private Group searchGroup(int id) {
+        for (Group group : groups) {
+            if (group.getId()==id)
                 return group;
         }
         return null;
