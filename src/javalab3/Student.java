@@ -15,7 +15,7 @@ public class Student {
     private int id;
     private String fio;
     public Group group;
-    private List<Integer> marks = new ArrayList();
+    private List<Integer> marks = new ArrayList<Integer>();
     public int num;
 
     public Student(int id, String fio) {

@@ -16,7 +16,7 @@ public class Group {
     private String title;
     private Student head;
     private int num;
-    private List<Student> students = new ArrayList();
+    private List<Student> students = new ArrayList<Student>();
 
     public Group(int id, String title) {
         this.id = id;

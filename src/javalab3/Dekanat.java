@@ -25,8 +25,9 @@ public class Dekanat {
     private static final String GROUPS_PATH = System.getProperty("user.dir") + "/db/" + GROUPS_FILE;
     private static final String STUDENTS_PATH = System.getProperty("user.dir") + "/db/" + STUDENTS_FILE;
 
-    private List<Student> students = new ArrayList();
-    private List<Group> groups = new ArrayList();
+    private List<Student> students = new ArrayList<Student>();
+    private List<Group> groups = new ArrayList<Group>();
+
 
     void importGroups() {
 
@@ -79,15 +80,18 @@ public class Dekanat {
     }
 
     void arrangeGroups() {
-        Iterator<Student> it = students.iterator();
-        for (Group group:groups){
-            group.clear();
-            for(int i=0; i<students.size()/groups.size(); i++) {
-                if (!it.hasNext())
-                    return;
-                group.addStudent(it.next());
 
-                }
+        Iterator<Student> iterator = students.iterator();
+        for (Group group : groups) {
+            group.clear();
+            for (int i = 0; i < students.size() / groups.size(); i++) {
+                if (!iterator.hasNext())
+                    return;
+                Student s = iterator.next();
+                group.addStudent(s);
+                s.setGroup(group);
+                //System.out.println(group);
+            }
         }
     }
 
@@ -119,4 +123,16 @@ public class Dekanat {
         }
         return null;
     }
+
+    public static void main(String[] args) {
+        Dekanat d = new Dekanat();
+        Group g1 = new Group(1, "First group");
+        d.groups.add(g1);
+        Student s1 = new Student(1, "Petrov");
+        s1.setGroup(g1);
+        g1.addStudent(s1);
+        System.out.println(d.getGroups().get(0).getStudentById(1).getGroup().avgScore());
+        System.out.println(d.getGroups().get(0).getStudentById(1).avgMark());
+    }
+
 }
