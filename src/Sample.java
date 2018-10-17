@@ -1,3 +1,5 @@
+import javalab3.Dekanat;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Konstantin
@@ -5,9 +7,10 @@
  * Time: 20:52
  * To change this template use File | Settings | File Templates.
  */
-public class Sample {
+public class Sample extends Dekanat{
     static int x;
     String s;
+
 
     public Sample(String s) {
      this.s=s;

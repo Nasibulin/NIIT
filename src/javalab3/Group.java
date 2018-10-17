@@ -17,6 +17,7 @@ public class Group {
     private Student head;
     private int num;
     private List<Student> students = new ArrayList<Student>();
+    private final String NO_GROUP_YET = "Р“СЂСѓРїРїР° РЅРµ СЃС„РѕСЂРјРёСЂРѕРІР°РЅР°. Р”РѕР±Р°РІСЊС‚Рµ СЃС‚СѓРґРµРЅС‚РѕРІ.";
 
     public Group(int id, String title) {
         this.id = id;
@@ -63,18 +64,23 @@ public class Group {
 
     }
 
-    protected void removeStudent(int id) {
+    public void removeStudent(Student student) {
         Iterator<Student> iterator = students.iterator();
         while (iterator.hasNext()) {
-            Student student = iterator.next();
-            if (student.getId() == id) {
+            Student st = iterator.next();
+            if (student == st) {
                 iterator.remove();
+                num--;
             }
         }
 
     }
 
-    protected void headElection() {
+    public List<Student> getStudents(){
+        return students;
+    }
+
+    public void headElection() {
         try {
             Student head = students.get(0);
             for (Student student : students) {
@@ -83,7 +89,7 @@ public class Group {
             this.head = head;
         } catch (IndexOutOfBoundsException ex) {
             //ex.printStackTrace();
-            System.err.println("Группа не сформирована. Добавьте студентов.");
+            System.err.println(NO_GROUP_YET);
         }
 
     }
@@ -105,6 +111,6 @@ public class Group {
     }
 
     public void clear() {
-        this.students.clear();
+        students.clear();
     }
 }

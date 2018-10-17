@@ -14,21 +14,19 @@ public class DekanatDemo {
         dek.importStudents();
         dek.arrangeGroups();
         dek.addRandomMarks(25);
-        System.out.println(dek.getGroups().get(0));
-        System.out.println(dek.getGroups().get(1));
-        System.out.println(dek.getGroups().get(2));
-        System.out.println(dek.getGroups().get(0).getNum());
-        System.out.println(dek.getGroups().get(1).getNum());
-        System.out.println(dek.getGroups().get(2).getNum());
-        dek.getGroups().get(0).headElection();
-        dek.getGroups().get(1).headElection();
-        dek.getGroups().get(2).headElection();
-        System.out.println(dek.getGroups().get(1).getStudentById(50).getMarks());
-        System.out.println(dek.getGroups().get(1).getStudentById(50).getGroup());
-        System.out.println(dek.getGroups().get(1).getStudentById(50));
-        System.out.println(dek.getGroups().get(0).getHead());
-        System.out.println(dek.getGroups().get(1).getHead());
-        System.out.println(dek.getGroups().get(2).getHead());
+        dek.allGroupElection();
+        dek.printData();
+        dek.dismissStudents(3.45);
+        dek.printData();
+//        System.out.println(dek.getGroups().get(0).getNum());
+//        System.out.println(dek.getGroups().get(1).getNum());
+//        System.out.println(dek.getGroups().get(2).getNum());
+//        System.out.println(dek.getGroups().get(1).getStudentById(50).getMarks());
+//        System.out.println(dek.getGroups().get(1).getStudentById(50).getGroup());
+//        System.out.println(dek.getGroups().get(1).getStudentById(50));
+//        System.out.println(dek.getGroups().get(0).getHead());
+//        System.out.println(dek.getGroups().get(1).getHead());
+//        System.out.println(dek.getGroups().get(2).getHead());
 
     }
 }

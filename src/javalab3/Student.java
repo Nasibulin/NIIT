@@ -14,9 +14,10 @@ import java.util.NoSuchElementException;
 public class Student {
     private int id;
     private String fio;
-    public Group group;
+    private Group group;
     private List<Integer> marks = new ArrayList<Integer>();
-    public int num;
+    private int num;
+    private final String NO_MARKS_YET = "Ð£ ÑÑ‚ÑƒÐ´ÐµÐ½Ñ‚Ð° ÐµÑ‰Ðµ Ð½ÐµÑ‚ Ð¾Ñ†ÐµÐ½Ð¾Ðº.";
 
     public Student(int id, String fio) {
         this.id = id;
@@ -34,7 +35,27 @@ public class Student {
             avgMark = marks.stream().mapToInt(e -> e).average().getAsDouble();
         } catch (NoSuchElementException ex) {
             //ex.printStackTrace();
-            System.err.println("Ó ñòóäåíòà åùå íåò îöåíîê.");
+            System.err.println(NO_MARKS_YET);
+        }
+        return avgMark;
+    }
+    public int minMark() {
+        int avgMark = 0;
+        try {
+            avgMark = marks.stream().mapToInt(e -> e).min().getAsInt();
+        } catch (NoSuchElementException ex) {
+            //ex.printStackTrace();
+            System.err.println(NO_MARKS_YET);
+        }
+        return avgMark;
+    }
+    public int maxMark() {
+        int avgMark = 0;
+        try {
+            avgMark = marks.stream().mapToInt(e -> e).max().getAsInt();
+        } catch (NoSuchElementException ex) {
+            //ex.printStackTrace();
+            System.err.println(NO_MARKS_YET);
         }
         return avgMark;
     }

@@ -7,10 +7,7 @@ import org.json.simple.parser.ParseException;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -103,11 +100,17 @@ public class Dekanat {
         }
     }
 
-    public List<Group> getGroups() {
-        return this.groups;
+    List<Group> getGroups() {
+        return groups;
     }
 
-    private Group searchGroup(String title) {
+    void allGroupElection() {
+        for (Group group : groups) {
+            group.headElection();
+        }
+    }
+
+    Group searchGroup(String title) {
         for (Group group : groups) {
             if (group.getTitle().equals(title))
                 return group;
@@ -115,7 +118,7 @@ public class Dekanat {
         return null;
     }
 
-    private Student searchStudent(int id) {
+    Student searchStudent(int id) {
 
         for (Student student : students) {
             if (student.getId() == id)
@@ -124,15 +127,62 @@ public class Dekanat {
         return null;
     }
 
-    public static void main(String[] args) {
-        Dekanat d = new Dekanat();
-        Group g1 = new Group(1, "First group");
-        d.groups.add(g1);
-        Student s1 = new Student(1, "Petrov");
-        s1.setGroup(g1);
-        g1.addStudent(s1);
-        System.out.println(d.getGroups().get(0).getStudentById(1).getGroup().avgScore());
-        System.out.println(d.getGroups().get(0).getStudentById(1).avgMark());
+    void transferStudent(Student student, Group toGroup) {
+        Group fromGroup = student.getGroup();
+        fromGroup.removeStudent(student);
+        student.setGroup(toGroup);
+        toGroup.addStudent(student);
+    }
+
+    void dismissStudents(double level) {
+
+        Iterator<Student> iterator = students.iterator();
+        while (iterator.hasNext()) {
+
+            Student s = iterator.next();
+            Group g = s.getGroup();
+            if (s.avgMark() < level) {
+                g.removeStudent(s);
+                iterator.remove();
+            }
+        }
+
+    }
+
+    int num(){
+        return students.size();
+    }
+
+    void printData(){
+        class Format{
+            private Formatter f = new Formatter(System.out);
+            private void printTitle(String title){
+                f.format("\n%22s\n", title);
+                f.format("--------------------------------------------------------\n");
+            }
+            private void printHeader(){
+                f.format("%-5s %15s %26s\n","№", "ФИО", "Средняя оценка");
+                f.format("--------------------------------------------------------\n");
+            }
+            private void printBody(int id, String fio, double avgMark){
+                f.format("%-5d %-30s %5.2f\n", id, fio, avgMark);
+            }
+            private void printFooter(double avgScore){
+                f.format("--------------------------------------------------------\n");
+                f.format("%-30s %5.2f\n","Средняя оценка в группе:", avgScore);
+            }
+        }
+        Format format = new Format();
+        for (Group group:groups){
+            format.printTitle(group.getTitle());
+            format.printHeader();
+            for (Student student:group.getStudents())
+                format.printBody(student.getId(),student.getFio(),student.avgMark());
+            format.printFooter(group.avgScore());
+        }
     }
 
 }
+
+
+
