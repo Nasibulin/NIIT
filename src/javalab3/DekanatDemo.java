@@ -22,5 +22,7 @@ public class DekanatDemo {
         dek.searchGroup(1).removeStudent(h);
         dek.dismissStudents(3.55);
         dek.printData();
+        dek.exportStudents();
+        dek.exportGroups();
     }
 }

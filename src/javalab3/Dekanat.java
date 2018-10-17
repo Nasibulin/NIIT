@@ -6,6 +6,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
@@ -21,6 +22,8 @@ public class Dekanat {
     private static final String GROUPS_FILE = "Groups.json";
     private static final String GROUPS_PATH = System.getProperty("user.dir") + "/db/" + GROUPS_FILE;
     private static final String STUDENTS_PATH = System.getProperty("user.dir") + "/db/" + STUDENTS_FILE;
+    private static final String GROUPS_EXP = System.getProperty("user.dir") + "/db/new_" + GROUPS_FILE;
+    private static final String STUDENTS_EXP = System.getProperty("user.dir") + "/db/new_" + STUDENTS_FILE;
 
     private List<Student> students = new ArrayList<Student>();
     private List<Group> groups = new ArrayList<Group>();
@@ -195,6 +198,46 @@ public class Dekanat {
             format.printFooter(group.avgScore(), group.getHead().getFio());
         }
     }
+    void exportStudents() {
+
+        JSONObject jsonObject = new JSONObject();
+        JSONArray studentArray = new JSONArray();
+        for (Student student:students){
+            JSONObject studentData = new JSONObject();
+            studentData.put("STUDENT", student.getFio());
+            studentData.put("ID", student.getId());
+            studentData.put("GROUP_ID",student.getGroup().getId());
+            studentArray.add(studentData);
+        }
+        jsonObject.put("Students", studentArray);
+        try {
+            FileWriter file = new FileWriter(STUDENTS_EXP);
+            file.write(jsonObject.toJSONString());
+            file.flush();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+    void exportGroups() {
+
+        JSONObject jsonObject = new JSONObject();
+        JSONArray groupsArray = new JSONArray();
+        for (Group group:groups){
+            JSONObject groupsData = new JSONObject();
+            groupsData.put("GROUP", group.getTitle());
+            groupsData.put("GROUP_ID", group.getId());
+            groupsArray.add(groupsData);
+        }
+        jsonObject.put("Groups", groupsArray);
+        try {
+            FileWriter file = new FileWriter(GROUPS_EXP);
+            file.write(jsonObject.toJSONString());
+            file.flush();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
 
 }
 
