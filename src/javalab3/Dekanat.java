@@ -118,6 +118,14 @@ public class Dekanat {
         return null;
     }
 
+    Group searchGroup(int id) {
+        for (Group group : groups) {
+            if (group.getId() == id)
+                return group;
+        }
+        return null;
+    }
+
     Student searchStudent(int id) {
 
         for (Student student : students) {
@@ -137,48 +145,54 @@ public class Dekanat {
     void dismissStudents(double level) {
 
         Iterator<Student> iterator = students.iterator();
-        while (iterator.hasNext()) {
 
+        while (iterator.hasNext()) {
             Student s = iterator.next();
             Group g = s.getGroup();
             if (s.avgMark() < level) {
                 g.removeStudent(s);
                 iterator.remove();
+                if (s == g.getHead()) g.headElection();
             }
         }
 
     }
 
-    int num(){
+    int num() {
         return students.size();
     }
 
-    void printData(){
-        class Format{
+    void printData() {
+        class Format {
             private Formatter f = new Formatter(System.out);
-            private void printTitle(String title){
-                f.format("\n%22s\n", title);
-                f.format("--------------------------------------------------------\n");
+
+            private void printTitle(String title) {
+                f.format("\n%-22s\n", title);
+                f.format("-----------------------------------------------------------\n");
             }
-            private void printHeader(){
-                f.format("%-5s %15s %26s\n","№", "ФИО", "Средняя оценка");
-                f.format("--------------------------------------------------------\n");
+
+            private void printHeader() {
+                f.format("%-5s %-37s %-10s\n", "ID", "ФИО", "Средняя оценка");
+                f.format("-----------------------------------------------------------\n");
             }
-            private void printBody(int id, String fio, double avgMark){
-                f.format("%-5d %-30s %5.2f\n", id, fio, avgMark);
+
+            private void printBody(int id, String fio, double avgMark) {
+                f.format("%-5d %-36s %5.2f\n", id, fio, avgMark);
             }
-            private void printFooter(double avgScore){
-                f.format("--------------------------------------------------------\n");
-                f.format("%-30s %5.2f\n","Средняя оценка в группе:", avgScore);
+
+            private void printFooter(double avgScore, String fio) {
+                f.format("-----------------------------------------------------------\n");
+                f.format("%-42s %5.2f\n", "Средняя оценка в группе:", avgScore);
+                f.format("%-10s %-36s\n", "Староста группы:", fio);
             }
         }
         Format format = new Format();
-        for (Group group:groups){
+        for (Group group : groups) {
             format.printTitle(group.getTitle());
             format.printHeader();
-            for (Student student:group.getStudents())
-                format.printBody(student.getId(),student.getFio(),student.avgMark());
-            format.printFooter(group.avgScore());
+            for (Student student : group.getStudents())
+                format.printBody(student.getId(), student.getFio(), student.avgMark());
+            format.printFooter(group.avgScore(), group.getHead().getFio());
         }
     }
 

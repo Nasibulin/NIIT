@@ -16,17 +16,11 @@ public class DekanatDemo {
         dek.addRandomMarks(25);
         dek.allGroupElection();
         dek.printData();
-        dek.dismissStudents(3.45);
+        //dek.dismissStudents(3.48);
+        dek.transferStudent(dek.searchStudent(10),dek.searchGroup(2));
+        Student h = dek.searchGroup(1).getHead();
+        dek.searchGroup(1).removeStudent(h);
+        dek.dismissStudents(3.55);
         dek.printData();
-//        System.out.println(dek.getGroups().get(0).getNum());
-//        System.out.println(dek.getGroups().get(1).getNum());
-//        System.out.println(dek.getGroups().get(2).getNum());
-//        System.out.println(dek.getGroups().get(1).getStudentById(50).getMarks());
-//        System.out.println(dek.getGroups().get(1).getStudentById(50).getGroup());
-//        System.out.println(dek.getGroups().get(1).getStudentById(50));
-//        System.out.println(dek.getGroups().get(0).getHead());
-//        System.out.println(dek.getGroups().get(1).getHead());
-//        System.out.println(dek.getGroups().get(2).getHead());
-
     }
 }

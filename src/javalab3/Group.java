@@ -71,6 +71,8 @@ public class Group {
             if (student == st) {
                 iterator.remove();
                 num--;
+                if (student==getHead()) headElection();
+                System.err.println("Студент "+student+" исключен из группы");
             }
         }
 
@@ -104,6 +106,9 @@ public class Group {
 
     public int getNum(){
         return num;
+    }
+    public int getId(){
+        return id;
     }
 
     public String toString() {
