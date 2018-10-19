@@ -1,6 +1,6 @@
 package javalab4;
 
-public class Manager extends Employee implements Project {
+public class Manager extends Employee implements ProjectShare {
 
     private double projectBonus;
     private double projectPercent;
@@ -12,8 +12,8 @@ public class Manager extends Employee implements Project {
         this.projectPercent = projectPercent;
     }
 
-    public void getProjectBonus() {
+    public double getProjectBonus() {
         // TODO implement here
-    }
+    return 0;}
 
 }

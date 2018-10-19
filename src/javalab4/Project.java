@@ -1,9 +1,20 @@
 package javalab4;
 
-public interface Project {
+import java.util.List;
 
-    public static double PROJECT_BUDGET = 500000.0;
-
-    public double getProjectBonus();
-
+/**
+ * Created with IntelliJ IDEA.
+ * User: Nasibulin
+ * Date: 19.10.18
+ * Time: 8:35
+ * To change this template use File | Settings | File Templates.
+ */
+public class Project {
+    private int id;
+    private String title;
+    private double budget;
+    private double engineersRatio;
+    private double managersRatio;
+    private List<? extends Engineer> engineers;
+    private List<? extends Manager> managers;
 }
