@@ -9,7 +9,7 @@ public class Personal extends Employee implements WorkTime {
     private double hourlyRate;
 
     public double getBasicSalary(double actualHours) {
-        return actualHours*hourlyRate;
+        return actualHours * hourlyRate;
     }
 
 }

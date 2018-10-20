@@ -17,6 +17,7 @@ public class ProjectManager extends Manager implements Heading {
 
     public double getHeadBonus() {
         // TODO implement here
-    return 0;}
+        return 0;
+    }
 
 }

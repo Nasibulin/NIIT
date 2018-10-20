@@ -9,6 +9,7 @@ public class Engineer extends Employee implements ProjectShare, WorkTime {
     private double overtimeHours;
     private double overtimeMultiplier;
     private double projectPercent;
+    private Project project;
 
 
     public Engineer(int id, String name, String position, double regularHourlyRate, double overtimeMultiplier,
@@ -20,28 +21,40 @@ public class Engineer extends Employee implements ProjectShare, WorkTime {
     }
 
     public double getProjectBonus() {
-        // TODO implement here
-    return 0;}
+
+        return project.getBudget() * projectPercent;
+
+    }
 
     public double getBasicSalary(double actualHours) {
-
-        basicSalary=actualHours/getBusinessHours()*regularHourlyRate;
-
-    return basicSalary;
+        basicSalary = actualHours * regularHourlyRate;
+        return basicSalary;
     }
 
-    public double getOvertimeSalary(double overtimeHours){
+    public double getOvertimeSalary(double overtimeHours) {
 
-        overtimeSalary=overtimeHours*overtimeMultiplier*regularHourlyRate;
+        overtimeSalary = overtimeHours * overtimeMultiplier * regularHourlyRate;
         return overtimeSalary;
     }
 
-    public double getOvertimeSalary(){
+    public double getOvertimeSalary() {
         return overtimeSalary;
     }
 
-    public double getSalary(double actualHours,double overtimeHours) {
-        return getBasicSalary(actualHours)+getOvertimeSalary(overtimeHours);
+    public double getSalary(double actualHours, double overtimeHours, Project project) {
+        return getBasicSalary(actualHours) + getOvertimeSalary(overtimeHours) + getProjectBonus();
+    }
+
+    public double getSalary(double actualHours, double overtimeHours) {
+        return getBasicSalary(actualHours) + getOvertimeSalary(overtimeHours);
+    }
+
+    public double getSalary(double actualHours) {
+        return getBasicSalary(actualHours);
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 
 }

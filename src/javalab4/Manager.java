@@ -14,6 +14,7 @@ public class Manager extends Employee implements ProjectShare {
 
     public double getProjectBonus() {
         // TODO implement here
-    return 0;}
+        return 0;
+    }
 
 }

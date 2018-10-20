@@ -7,13 +7,4 @@ public class Programmer extends Engineer {
         super(id, name, position, regularHourlyRate, overtimeMultiplier, projectPercent);
     }
 
-    public double getBasicSalary(double actualHours) {
-
-        double basicSalary = super.getBasicSalary(actualHours);
-        return basicSalary;
-    }
-    public double getSalary(double actualHours){
-        return getBasicSalary(actualHours);
-    }
-
 }
