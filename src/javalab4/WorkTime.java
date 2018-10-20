@@ -2,6 +2,6 @@ package javalab4;
 
 public interface WorkTime {
 
-    public double getBasicSalary();
+    public double getBasicSalary(double actualHours);
 
 }

@@ -8,8 +8,8 @@ public class Personal extends Employee implements WorkTime {
 
     private double hourlyRate;
 
-    public double getBasicSalary() {
-        return super.getActualHours()*hourlyRate;
+    public double getBasicSalary(double actualHours) {
+        return actualHours*hourlyRate;
     }
 
 }

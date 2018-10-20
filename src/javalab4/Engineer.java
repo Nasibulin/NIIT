@@ -23,9 +23,9 @@ public class Engineer extends Employee implements ProjectShare, WorkTime {
         // TODO implement here
     return 0;}
 
-    public double getBasicSalary() {
+    public double getBasicSalary(double actualHours) {
 
-        basicSalary=super.getActualHours()/super.getBusinessHours()*regularHourlyRate;
+        basicSalary=actualHours/getBusinessHours()*regularHourlyRate;
 
     return basicSalary;
     }
@@ -40,8 +40,8 @@ public class Engineer extends Employee implements ProjectShare, WorkTime {
         return overtimeSalary;
     }
 
-    public double getSalary() {
-        return getBasicSalary()+getOvertimeSalary();
+    public double getSalary(double actualHours,double overtimeHours) {
+        return getBasicSalary(actualHours)+getOvertimeSalary(overtimeHours);
     }
 
 }

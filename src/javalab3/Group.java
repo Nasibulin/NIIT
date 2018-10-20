@@ -72,7 +72,7 @@ public class Group {
                 iterator.remove();
                 num--;
                 if (student==getHead()) headElection();
-                System.err.println("Студент "+student+" исключен из группы");
+                System.err.printf("\n%s %s %s","Студент",student,"исключен из группы");
             }
         }
 
