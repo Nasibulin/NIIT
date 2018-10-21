@@ -2,21 +2,22 @@ package javalab4;
 
 public class Employee {
 
-    private int id;
+    private Integer id;
     private String name;
     private String position;
     private double salary;
     private double actualHours;
-    private double actualDays;
+    private Double actualDays;
     private static int businessDays;
     private static int businessHours;
     private static final int WORKDAY_DURATION = 8;
 
-    public Employee(int id, String name, String position) {
+    public Employee(Integer id, String name, String position) {
         this.id = id;
         this.name = name;
         this.position = position;
     }
+
 
     public int getId() {
         return id;

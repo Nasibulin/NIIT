@@ -1,14 +1,25 @@
 package test;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
 public class Main {
-    public static void main(String[] args) {
-                int big = 1234567890;
-                double approx = big;
-        //        System.out.println((int)approx);
-          System.out.printf("12%1$s","13%1$s","14%1$s");
+
+    public static void main(String args[]) throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+
+        // Get class name as string.
+        String myClassName = Base.class.getName();
+        // Create class of type Base.
+        Class<?> myClass = Class.forName("test.Base");
+        // Create constructor call with argument types.
+        Constructor<?> ctr = myClass.getConstructor(String.class, String.class);
+        // Finally create object of type Base and pass data to constructor.
+        String arg1 = "My User Data";
+        String arg2 = "My User Data2";
+        Object object = ctr.newInstance(new Object[]{arg1, arg2});
+        // Type-cast and access the data from class Base.
+        Base base = (Base)object;
+        System.out.println(base.data);
     }
 
-    public static void method(Integer iOb) {
-        System.out.println(iOb);
-    }
 }

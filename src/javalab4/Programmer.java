@@ -2,8 +2,8 @@ package javalab4;
 
 public class Programmer extends Engineer {
 
-    public Programmer(int id, String name, String position, double regularHourlyRate, double overtimeMultiplier,
-                      double projectPercent) {
+    public Programmer(Integer id, String name, String position, Double regularHourlyRate, Double overtimeMultiplier,
+                      Double projectPercent) {
         super(id, name, position, regularHourlyRate, overtimeMultiplier, projectPercent);
     }
 
