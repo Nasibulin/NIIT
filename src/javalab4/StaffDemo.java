@@ -29,10 +29,8 @@ public class StaffDemo {
     private static final String STAFF_PATH = System.getProperty("user.dir") + "/db/" + STAFF_FILE;
 //    static StaffDemo s = new StaffDemo();
 //    static String PACKAGE_PREFIX = s.getClass().getPackage().getName()+'.';
-    private static String className = "javalab4.Programmer";
     private List<Employee> staff = new ArrayList<Employee>();
     private HashMap<Integer,String> pos = new HashMap<Integer,String>();
-    //private List<Group> groups = new ArrayList<Group>();
 
     static {
         jobToClass = new HashMap<String, String>();
@@ -95,7 +93,6 @@ public class StaffDemo {
                 Integer position = ((Long) staffData.get("position")).intValue();
 
                 Class<?> localstaff = Class.forName(PACKAGE_PREFIX+jobToClass.get(pos.get(position)));
-                //Constructor<?> ctor = staff.getConstructor();
                 Constructor<?> ctor = localstaff.getConstructor(Integer.class, String.class, String.class);
                 Object object = ctor.newInstance(new Object[]{id,fio,pos.get(position)});
                 staff.add((Employee)object);
@@ -128,35 +125,9 @@ public class StaffDemo {
         sd.setUpPositions();
         sd.setUpStaff();
         for (Employee e:sd.staff){
-            System.out.println(e.getClass()+" "+e.getId()+"\t"+e.getName()+"\t"+e.getPosition());
+            System.out.println(e.getClass().getTypeName()+" "+e.getId()+"\t"+e.getName()+"\t"+e.getPosition());
         }
 
-    }
-    public static void main_bckup(
-            String[] args) throws NoSuchMethodException, ClassNotFoundException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        //Employee e = new Employee(1, "Иванов", "Инженер");
-        Employee.setBusinessDays(22);
-        //Personal p = new Personal(1, "Петров", "Водитель", 100);
-        //Programmer prog = new Programmer(1, "Сидоров", "Программист", 500, 1.5, 0.1);
-        //System.out.println(p);
-        //System.out.println(p.getBusinessHours());
-        //System.out.println(e);
-        //System.out.println(e.getBusinessDays());
-        //System.out.println(prog.getSalary(176, 5));
-        //System.out.println(prog.getSalary(176));
-
-        Tester t = new Tester(3, "Васечкин", "Тестер", 350, 1.5, 0.1);
-        System.out.println(t.getSalary(176, 5));
-        Project p1 = new Project(1, "Windows 11 project", 200000);
-        t.setProject(p1);
-        System.out.println(t.getSalary(176, 5, p1));
-
-        Class<?> staff = Class.forName(className);
-        //Constructor<?> ctor = staff.getConstructor();
-        Constructor<?> ctor = staff.getConstructor(Integer.class, String.class, String.class);
-        Object object = ctor.newInstance(new Object[]{1, "Сидоров", "Программист"});
-
-        System.out.println(PACKAGE_PREFIX + jobToClass.get("Инженер-программист"));
     }
 }
 
