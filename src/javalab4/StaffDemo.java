@@ -24,7 +24,7 @@ import java.util.List;
  */
 public class StaffDemo {
     private static HashMap<String, String> jobToClass;
-    private static final String PACKAGE_PREFIX = "";
+    private static final String PACKAGE_PREFIX = "javalab4.";
     private static final String STAFF_FILE = "Staff.json";
     private static final String STAFF_PATH = System.getProperty("user.dir") + "/db/" + STAFF_FILE;
 //    static StaffDemo s = new StaffDemo();
@@ -93,7 +93,12 @@ public class StaffDemo {
                 Integer id = ((Long) staffData.get("staff_id")).intValue();
                 String fio = (String) staffData.get("fio");
                 Integer position = ((Long) staffData.get("position")).intValue();
-                staff.add(new Personal(id, fio, pos.get(position)));
+
+                Class<?> localstaff = Class.forName(PACKAGE_PREFIX+jobToClass.get(pos.get(position)));
+                //Constructor<?> ctor = staff.getConstructor();
+                Constructor<?> ctor = localstaff.getConstructor(Integer.class, String.class, String.class);
+                Object object = ctor.newInstance(new Object[]{id,fio,pos.get(position)});
+                staff.add((Employee)object);
                 i++;
             }
         } catch (FileNotFoundException e) {
@@ -101,6 +106,16 @@ public class StaffDemo {
         } catch (ParseException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (IOException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (InstantiationException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (IllegalAccessException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
 
@@ -113,7 +128,7 @@ public class StaffDemo {
         sd.setUpPositions();
         sd.setUpStaff();
         for (Employee e:sd.staff){
-            System.out.println(e.getId()+"\t"+e.getName()+"\t"+e.getPosition());
+            System.out.println(e.getClass()+" "+e.getId()+"\t"+e.getName()+"\t"+e.getPosition());
         }
 
     }
