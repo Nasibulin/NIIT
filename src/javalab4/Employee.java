@@ -6,16 +6,18 @@ public class Employee {
     private String name;
     private String position;
     private double salary;
+    private Double hourlyRate;
     private double actualHours;
     private Double actualDays;
     private static int businessDays;
     private static int businessHours;
     private static final int WORKDAY_DURATION = 8;
 
-    public Employee(Integer id, String name, String position) {
+    public Employee(Integer id, String name, String position, Double hourlyRate) {
         this.id = id;
         this.name = name;
         this.position = position;
+        this.hourlyRate = hourlyRate;
     }
 
 
@@ -31,8 +33,12 @@ public class Employee {
         return position;
     }
 
+    public Double getHourlyRate() {
+        return hourlyRate;
+    }
+
     public double getSalary() {
-        return salary;
+        return hourlyRate*businessHours;
     }
 
 

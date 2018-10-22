@@ -6,13 +6,13 @@ public class Manager extends Employee implements ProjectShare {
     private double projectPercent;
 
 
-    public Manager(Integer id, String name, String position, double projectPercent) {
-        super(id, name, position);
+    public Manager(Integer id, String name, String position, Double hourlyRate, Double projectPercent) {
+        super(id, name, position, hourlyRate);
         this.projectPercent = projectPercent;
     }
 
-    public Manager(Integer id, String name, String position) {
-        super(id, name, position);
+    public Manager(Integer id, String name, String position, Double hourlyRate) {
+        super(id, name, position, hourlyRate);
     }
 
     public double getProjectBonus() {

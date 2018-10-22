@@ -14,8 +14,8 @@ public class TeamLeader extends Programmer implements Heading {
         this.headRate = headRate;
     }
 
-    public TeamLeader(Integer id, String name, String position) {
-        super(id, name, position);
+    public TeamLeader(Integer id, String name, String position, Double regularHourlyRate) {
+        super(id, name, position, regularHourlyRate);
     }
 
     public double getHeadBonus() {

@@ -23,15 +23,14 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class StaffDemo {
-    private static HashMap<String, String> jobToClass;
     private static final String PACKAGE_PREFIX = "javalab4.";
     private static final String STAFF_FILE = "Staff.json";
     private static final String STAFF_PATH = System.getProperty("user.dir") + "/db/" + STAFF_FILE;
-//    static StaffDemo s = new StaffDemo();
+    private static HashMap<String, String> jobToClass;
+    //    static StaffDemo s = new StaffDemo();
 //    static String PACKAGE_PREFIX = s.getClass().getPackage().getName()+'.';
     private List<Employee> staff = new ArrayList<Employee>();
-    private HashMap<Integer,String> pos = new HashMap<Integer,String>();
-
+    private HashMap<Integer, String> pos = new HashMap<Integer, String>();
     static {
         jobToClass = new HashMap<String, String>();
         jobToClass.put("Уборщица", "Cleaner");
@@ -45,7 +44,19 @@ public class StaffDemo {
         jobToClass.put("Руководитель направления", "SeniorManager");
     }
 
-    public void setUpPositions(){
+    public static void main(
+            String[] args) throws NoSuchMethodException, ClassNotFoundException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        StaffDemo sd = new StaffDemo();
+        Employee.setBusinessHours(176);
+        sd.setUpPositions();
+        sd.setUpStaff();
+        for (Employee e : sd.staff) {
+            System.out.println(e.getId() + "\t" + e.getName() + "\t" + e.getPosition() + "\t" + e.getSalary());
+        }
+
+    }
+
+    public void setUpPositions() {
         pos.clear();
         JSONParser parser = new JSONParser();
 
@@ -74,7 +85,8 @@ public class StaffDemo {
 
 
     }
-    public void setUpStaff(){
+
+    public void setUpStaff() {
         staff.clear();
         JSONParser parser = new JSONParser();
 
@@ -91,11 +103,12 @@ public class StaffDemo {
                 Integer id = ((Long) staffData.get("staff_id")).intValue();
                 String fio = (String) staffData.get("fio");
                 Integer position = ((Long) staffData.get("position")).intValue();
+                Double hourly_rate = ((Long) (staffData.get("hourly_rate") == null ? 0L : staffData.get("hourly_rate"))).doubleValue();
 
-                Class<?> localstaff = Class.forName(PACKAGE_PREFIX+jobToClass.get(pos.get(position)));
-                Constructor<?> ctor = localstaff.getConstructor(Integer.class, String.class, String.class);
-                Object object = ctor.newInstance(new Object[]{id,fio,pos.get(position)});
-                staff.add((Employee)object);
+                Class<?> localstaff = Class.forName(PACKAGE_PREFIX + jobToClass.get(pos.get(position)));
+                Constructor<?> ctor = localstaff.getConstructor(Integer.class, String.class, String.class, Double.class);
+                Object object = ctor.newInstance(new Object[]{id, fio, pos.get(position), hourly_rate});
+                staff.add((Employee) object);
                 i++;
             }
         } catch (FileNotFoundException e) {
@@ -116,17 +129,6 @@ public class StaffDemo {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
 
-
-    }
-
-    public static void main(
-            String[] args) throws NoSuchMethodException, ClassNotFoundException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        StaffDemo sd = new StaffDemo();
-        sd.setUpPositions();
-        sd.setUpStaff();
-        for (Employee e:sd.staff){
-            System.out.println(e.getClass().getTypeName()+" "+e.getId()+"\t"+e.getName()+"\t"+e.getPosition());
-        }
 
     }
 }

@@ -14,14 +14,14 @@ public class Engineer extends Employee implements ProjectShare, WorkTime {
 
     public Engineer(Integer id, String name, String position, Double regularHourlyRate, Double overtimeMultiplier,
                     Double projectPercent) {
-        super(id, name, position);
+        super(id, name, position, regularHourlyRate);
         this.regularHourlyRate = regularHourlyRate;
         this.overtimeMultiplier = overtimeMultiplier;
         this.projectPercent = projectPercent;
     }
 
-    public Engineer(Integer id, String name, String position) {
-        super(id, name, position);
+    public Engineer(Integer id, String name, String position, Double regularHourlyRate) {
+        super(id, name, position, regularHourlyRate);
     }
 
     public double getProjectBonus() {
