@@ -20,6 +20,10 @@ public class Engineer extends Employee implements ProjectShare, WorkTime {
         this.projectPercent = projectPercent;
     }
 
+    public Engineer(Integer id, String name, String position) {
+        super(id, name, position);
+    }
+
     public double getProjectBonus() {
 
         return project.getBudget() * projectPercent;

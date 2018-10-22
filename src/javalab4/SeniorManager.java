@@ -2,9 +2,13 @@ package javalab4;
 
 public class SeniorManager extends ProjectManager {
 
-    public SeniorManager(int id, String name, String position, double projectBonus, double projectPercent,
-                         double headBonus, int subordinatesQty, double subordinatesRate) {
-        super(id, name, position, projectBonus, projectPercent, headBonus, subordinatesQty, subordinatesRate);
+    public SeniorManager(Integer id, String name, String position, double projectPercent,
+                         int subordinatesQty, double subordinatesRate) {
+        super(id, name, position, projectPercent, subordinatesQty, subordinatesRate);
+    }
+
+    public SeniorManager(Integer id, String name, String position) {
+        super(id, name, position);
     }
 
 

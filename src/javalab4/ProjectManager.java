@@ -7,12 +7,15 @@ public class ProjectManager extends Manager implements Heading {
     private int subordinatesQty;
     private double subordinatesRate;
 
-    public ProjectManager(int id, String name, String position, double projectBonus, double projectPercent,
-                          double headBonus, int subordinatesQty, double subordinatesRate) {
-        super(id, name, position, projectBonus, projectPercent);
-        this.headBonus = headBonus;
+    public ProjectManager(Integer id, String name, String position, Double projectPercent,
+                          Integer subordinatesQty, Double subordinatesRate) {
+        super(id, name, position, projectPercent);
         this.subordinatesQty = subordinatesQty;
         this.subordinatesRate = subordinatesRate;
+    }
+
+    public ProjectManager(Integer id, String name, String position) {
+        super(id, name, position);
     }
 
     public double getHeadBonus() {
