@@ -3,14 +3,12 @@ package javalab4;
 public class Manager extends Employee implements ProjectShare {
 
     private double projectBonus;
-    private double projectPercent;
-    private int actualHours;
-
+    private static final double PROJECT_PERCENT = 0.075;
+    private Project project;
 
 
     public Manager(Integer id, String name, String position, Double hourlyRate) {
         super(id, name, position, hourlyRate);
-        this.projectPercent = projectPercent;
     }
 
     public Manager(Integer id, String name, String position, Double hourlyRate, Integer actualHours) {
@@ -18,9 +16,24 @@ public class Manager extends Employee implements ProjectShare {
         //super.setActualHours(getBusinessHours());
     }
 
+    @Override
     public double getProjectBonus() {
-        // TODO implement here
-        return 0;
+        projectBonus = ((project == null) ? 0 : project.getBudget()) * PROJECT_PERCENT;
+        return projectBonus;
+
+    }
+    @Override
+    public void setProject(Project project) {
+        this.project = project;
     }
 
+    @Override
+    public Project getProject() {
+        return project;
+    }
+
+    @Override
+    public double getSalary() {
+        return getProjectBonus();
+    }
 }

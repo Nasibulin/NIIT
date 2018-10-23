@@ -12,11 +12,11 @@ import java.util.List;
 public class Project {
     private int id;
     private String title;
-    private double budget;
+    private int budget;
     private List<Engineer> engineers;
     private List<Manager> managers;
 
-    public Project(int id, String title, double budget) {
+    public Project(int id, String title, int budget) {
         this.id = id;
         this.title = title;
         this.budget = budget;
@@ -26,8 +26,9 @@ public class Project {
         return budget;
     }
 
+    @Override
     public String toString() {
-        return title;
+        return (title==null)?"":title;
     }
 
 }

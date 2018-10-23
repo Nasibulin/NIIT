@@ -1,6 +1,6 @@
 package javalab4;
 
-public class Employee implements Comparable<Employee>,WorkTime,ProjectShare {
+public class Employee implements Comparable<Employee>, WorkTime, ProjectShare {
 
     private static final int WORKDAY_DURATION = 8;
     private static int businessDays;

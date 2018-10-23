@@ -28,6 +28,7 @@ public class StaffDemo {
 //    static String PACKAGE_PREFIX = s.getClass().getPackage().getName()+'.';
     private static List<Employee> staff = new ArrayList<Employee>();
     private static HashMap<Integer, String> pos = new HashMap<Integer, String>();
+    private static HashMap<Integer, Project> projects = new HashMap<Integer, Project>();
 
     static {
         jobToClass = new HashMap<String, String>();
@@ -47,11 +48,12 @@ public class StaffDemo {
         StaffDemo sd = new StaffDemo();
         Employee.setBusinessHours(176);
         sd.importPositions();
+        sd.importProjects();
         sd.importStaff();
         Collections.sort(staff);
         for (Employee e : staff) {
             System.out.println(
-                    e.getId() + "\t" + e.getName() + "\t" + e.getPosition() + "\t" + e.getBusinessHours() + "\t" + e.getActualHours() + "\t" + e.getHourlyRate() + "\t" + e.getBasicSalary() + "\t" + e.getOvertimeSalary() + "\t"+ e.getProjectBonus() + "\t" + e.getSalary());
+                    e.getId() + "\t" + e.getName() + "\t" + e.getPosition() + "\t" + e.getBusinessHours() + "\t" + e.getActualHours() + "\t" + e.getOvertimeHours() + "\t" + e.getHourlyRate() + "\t" + e.getBasicSalary() + "\t" + e.getOvertimeSalary() + "\t" + e.getProject() + "\t" + e.getProjectBonus() + "\t" + e.getSalary());
         }
 
     }
@@ -86,6 +88,37 @@ public class StaffDemo {
 
     }
 
+    public void importProjects() {
+        projects.clear();
+        JSONParser parser = new JSONParser();
+
+        try {
+            Object obj = parser.parse(new FileReader(STAFF_PATH));
+            JSONObject jsonObject = (JSONObject) obj;
+            JSONArray posArray = (JSONArray) jsonObject.get("Projects");
+
+            Iterator<JSONArray> iterator = posArray.iterator();
+            int i = 0;
+            while (iterator.hasNext()) {
+                iterator.next();
+                JSONObject posData = (JSONObject) posArray.get(i);
+                int id = ((Long) posData.get("id")).intValue();
+                String title = (String) posData.get("title");
+                int budget = ((Long) posData.get("budget")).intValue();
+                projects.put(id, new Project(id, title, budget));
+                i++;
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (ParseException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (IOException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+
+
+    }
+
     public void importStaff() {
         staff.clear();
         JSONParser parser = new JSONParser();
@@ -107,13 +140,21 @@ public class StaffDemo {
                         "hourly_rate"))).doubleValue();
                 int actual_hours = ((Long) (staffData.get("actual_hours") == null ? 0L : staffData.get(
                         "actual_hours"))).intValue();
+                int ot_hours = ((Long) (staffData.get("ot_hours") == null ? 0L : staffData.get(
+                        "ot_hours"))).intValue();
+                int project = ((Long) (staffData.get("project") == null ? 0L : staffData.get(
+                        "project"))).intValue();
 
                 Class<?> localstaff = Class.forName(PACKAGE_PREFIX + jobToClass.get(pos.get(position)));
                 Constructor<?> ctor = localstaff.getConstructor(Integer.class, String.class, String.class, Double.class,
                                                                 Integer.class);
-                //Object object = ctor.newInstance(new Object[]{id, fio, pos.get(position), hourly_rate});
+
                 Object object = ctor.newInstance(new Object[]{id, fio, pos.get(position), hourly_rate, actual_hours});
-                staff.add((Employee) object);
+                Employee emp = (Employee) object;
+                emp.setOvertimeHours(ot_hours);
+                emp.setProject(projects.get(project));
+
+                staff.add(emp);
                 i++;
             }
         } catch (FileNotFoundException e) {

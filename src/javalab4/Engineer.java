@@ -2,11 +2,11 @@ package javalab4;
 
 public class Engineer extends Employee implements ProjectShare, WorkTime {
 
+    private static final double OVERTIME_MULTIPLIER = 1.5;
+    private static final double PROJECT_PERCENT = 0.01;
     private double projectBonus;
     private double overtimeSalary;
-    private double overtimeHours;
-    private double overtimeMultiplier;
-    private double projectPercent;
+    private int overtimeHours;
     private Project project;
 
 
@@ -14,8 +14,6 @@ public class Engineer extends Employee implements ProjectShare, WorkTime {
                     Double overtimeMultiplier,
                     Double projectPercent) {
         super(id, name, position, regularHourlyRate, actualHours);
-        this.overtimeMultiplier = overtimeMultiplier;
-        this.projectPercent = projectPercent;
     }
 
     public Engineer(Integer id, String name, String position, Double regularHourlyRate, Integer actualHours) {
@@ -23,8 +21,17 @@ public class Engineer extends Employee implements ProjectShare, WorkTime {
 
     }
 
+    public int getOvertimeHours() {
+        return overtimeHours;
+    }
+
+    public void setOvertimeHours(int overtimeHours) {
+        this.overtimeHours = overtimeHours;
+    }
+
+    @Override
     public double getProjectBonus() {
-        projectBonus = ((project == null) ? 0 : project.getBudget()) * projectPercent;
+        projectBonus = ((project == null) ? 0 : project.getBudget()) * PROJECT_PERCENT;
         return projectBonus;
 
     }
@@ -36,7 +43,7 @@ public class Engineer extends Employee implements ProjectShare, WorkTime {
 
     @Override
     public double getOvertimeSalary() {
-        overtimeSalary = overtimeHours * overtimeMultiplier * super.getHourlyRate();
+        overtimeSalary = overtimeHours * OVERTIME_MULTIPLIER * super.getHourlyRate();
         return overtimeSalary;
     }
 
@@ -47,6 +54,10 @@ public class Engineer extends Employee implements ProjectShare, WorkTime {
 
     public void setProject(Project project) {
         this.project = project;
+    }
+
+    public Project getProject() {
+        return project;
     }
 
 }
