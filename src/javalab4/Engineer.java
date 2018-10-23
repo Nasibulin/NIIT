@@ -21,10 +21,12 @@ public class Engineer extends Employee implements ProjectShare, WorkTime {
 
     }
 
+    @Override
     public int getOvertimeHours() {
         return overtimeHours;
     }
 
+    @Override
     public void setOvertimeHours(int overtimeHours) {
         this.overtimeHours = overtimeHours;
     }
@@ -52,10 +54,12 @@ public class Engineer extends Employee implements ProjectShare, WorkTime {
         return getBasicSalary() + getOvertimeSalary() + getProjectBonus();
     }
 
+    @Override
     public void setProject(Project project) {
         this.project = project;
     }
 
+    @Override
     public Project getProject() {
         return project;
     }
