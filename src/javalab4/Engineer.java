@@ -8,6 +8,7 @@ public class Engineer extends Employee implements ProjectShare, WorkTime {
     private double overtimeSalary;
     private int overtimeHours;
     private Project project;
+    public static int count;
 
 
     public Engineer(Integer id, String name, String position, Double regularHourlyRate, Integer actualHours,
@@ -18,7 +19,7 @@ public class Engineer extends Employee implements ProjectShare, WorkTime {
 
     public Engineer(Integer id, String name, String position, Double regularHourlyRate, Integer actualHours) {
         super(id, name, position, regularHourlyRate, actualHours);
-
+        count++;
     }
 
     @Override
@@ -51,7 +52,7 @@ public class Engineer extends Employee implements ProjectShare, WorkTime {
 
     @Override
     public double getSalary() {
-        return getBasicSalary() + getOvertimeSalary() + getProjectBonus();
+        return getBasicSalary() + getOvertimeSalary() + getProjectBonus() + getHeadBonus();
     }
 
     @Override

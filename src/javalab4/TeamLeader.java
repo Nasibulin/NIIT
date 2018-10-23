@@ -2,6 +2,7 @@ package javalab4;
 
 public class TeamLeader extends Programmer implements Heading {
 
+    private static int HEAD_RATE = 1000;
     private double headBonus;
     private int subordinatesQty;
     private double headRate;
@@ -20,8 +21,8 @@ public class TeamLeader extends Programmer implements Heading {
     }
 
     public double getHeadBonus() {
-        // TODO implement here
-        return 0;
+        headBonus = HEAD_RATE * (Engineer.count - 1);
+        return headBonus;
     }
 
 }

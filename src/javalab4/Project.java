@@ -28,7 +28,7 @@ public class Project {
 
     @Override
     public String toString() {
-        return (title==null)?"":title;
+        return (title == null) ? "" : title;
     }
 
 }

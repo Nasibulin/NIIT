@@ -2,14 +2,21 @@ package javalab4;
 
 public class SeniorManager extends ProjectManager {
 
-//    public SeniorManager(Integer id, String name, String position, double projectPercent,
-//                         int subordinatesQty, double subordinatesRate) {
-//        super(id, name, position, projectPercent, subordinatesQty, subordinatesRate);
-//    }
+    private static final double PROJECT_PERCENT = 0.1;
+    private static final int HEAD_RATE = 4000;
+    //private Project project;
+    //private double projectBonus;
+    private double headBonus;
+
 
     public SeniorManager(Integer id, String name, String position, Double hourlyRate, Integer actualHours) {
         super(id, name, position, hourlyRate, actualHours);
     }
 
+    @Override
+    public double getHeadBonus() {
+        headBonus = HEAD_RATE * (Employee.count - 1);
+        return headBonus;
+    }
 
 }

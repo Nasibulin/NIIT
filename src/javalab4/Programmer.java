@@ -1,6 +1,7 @@
 package javalab4;
 
 public class Programmer extends Engineer {
+    public int count;
 
     public Programmer(Integer id, String name, String position, Double regularHourlyRate, Integer actualHours,
                       Double overtimeMultiplier,
@@ -10,6 +11,7 @@ public class Programmer extends Engineer {
 
     public Programmer(Integer id, String name, String position, Double regularHourlyRate, Integer actualHours) {
         super(id, name, position, regularHourlyRate, actualHours);
+        count++;
     }
 
 }

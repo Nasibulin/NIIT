@@ -1,6 +1,6 @@
 package javalab4;
 
-public class Employee implements Comparable<Employee>, WorkTime, ProjectShare {
+public class Employee implements Comparable<Employee>, WorkTime, ProjectShare, Heading {
 
     private static final int WORKDAY_DURATION = 8;
     private static int businessDays;
@@ -12,6 +12,7 @@ public class Employee implements Comparable<Employee>, WorkTime, ProjectShare {
     private double hourlyRate;
     private int actualHours;
     private int actualDays;
+    public static int count;
 
     public Employee(Integer id, String name, String position, Double hourlyRate) {
         this.id = id;
@@ -26,6 +27,7 @@ public class Employee implements Comparable<Employee>, WorkTime, ProjectShare {
         this.position = position;
         this.hourlyRate = hourlyRate;
         this.actualHours = actualHours;
+        count++;
     }
 
     public static int getBusinessDays() {

@@ -2,6 +2,7 @@ package javalab4;
 
 public interface Heading {
 
-    public double getHeadBonus();
-
+    public default double getHeadBonus() {
+        return 0;
+    }
 }

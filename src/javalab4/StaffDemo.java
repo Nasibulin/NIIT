@@ -51,11 +51,46 @@ public class StaffDemo {
         sd.importProjects();
         sd.importStaff();
         Collections.sort(staff);
-        for (Employee e : staff) {
-            System.out.println(
-                    e.getId() + "\t" + e.getName() + "\t" + e.getPosition() + "\t" + e.getBusinessHours() + "\t" + e.getActualHours() + "\t" + e.getOvertimeHours() + "\t" + e.getHourlyRate() + "\t" + e.getBasicSalary() + "\t" + e.getOvertimeSalary() + "\t" + e.getProject() + "\t" + e.getProjectBonus() + "\t" + e.getSalary());
-        }
+        sd.printSummary();
+//        for (Employee e : staff) {
+//            System.out.println(
+//                    e.getId() + "\t" + e.getName() + "\t" + e.getPosition() + "\t" + e.getBusinessHours() + "\t" + e.getActualHours() + "\t" + e.getOvertimeHours() + "\t" + e.getHourlyRate() + "\t" + e.getBasicSalary() + "\t" + e.getOvertimeSalary() + "\t" + ((e.getProject() == null) ? '-' : e.getProject()) + "\t" + e.getProjectBonus() + "\t" + e.getHeadBonus() + "\t" + e.getSalary());
+//        }
 
+    }
+
+    void printSummary() {
+        class Format {
+            private Formatter f = new Formatter(System.out);
+
+            private void printTitle(String title) {
+                f.format("\n%-22s\n", title);
+                f.format("----------------------------------------------------------------------------------------------------------------------\n");
+            }
+
+            private void printHeader() {
+                f.format("%-3s %-27s %-27s %-6s %-6s %-5s %-7s %-10s %-7s %-6s\n", "ID", "ФИО", "Должность", "План", "Факт", "Сверх.", "Почас.", "Тариф", "Сверх.", "Проект");
+                f.format("----------------------------------------------------------------------------------------------------------------------\n");
+            }
+
+            private void printBody(int id, String name, String pos, int bh, int ah, int oth, double hr, double bs, double ots, String proj, double pb, double hb, double s) {
+                f.format("%-3d %-27s %-27s %-6d %-6d %-5d %7.2f %9.2f %9.2f %-10s\n", id, name, pos, bh, ah, oth, hr, bs, ots, proj, pb, hb, s);
+            }
+
+            private void printFooter(double avgScore, String fio) {
+                f.format("----------------------------------------------------------------------------------------------------------------------\n");
+                f.format("%-42s %5.2f\n", "Средняя оценка в группе:", avgScore);
+                f.format("%-10s %-36s\n", "Староста группы:", fio);
+            }
+        }
+        Format format = new Format();
+
+        format.printTitle("Ведомость заработной платы:");
+        format.printHeader();
+        for (Employee e : staff) {
+            format.printBody(e.getId(), e.getName(), e.getPosition(), e.getBusinessHours(), e.getActualHours(), e.getOvertimeHours(), e.getHourlyRate(), e.getBasicSalary(), e.getOvertimeSalary(), ((e.getProject() == null) ? '-' : e.getProject()).toString(), e.getProjectBonus(), e.getHeadBonus(), e.getSalary());
+            //format.printFooter(group.avgScore(), group.getHead().getFio());
+        }
     }
 
     public void importPositions() {
@@ -147,7 +182,7 @@ public class StaffDemo {
 
                 Class<?> localstaff = Class.forName(PACKAGE_PREFIX + jobToClass.get(pos.get(position)));
                 Constructor<?> ctor = localstaff.getConstructor(Integer.class, String.class, String.class, Double.class,
-                                                                Integer.class);
+                        Integer.class);
 
                 Object object = ctor.newInstance(new Object[]{id, fio, pos.get(position), hourly_rate, actual_hours});
                 Employee emp = (Employee) object;
