@@ -2,12 +2,12 @@ package javalab4;
 
 public class Programmer extends Engineer {
 
-    public Programmer(Integer id, String name, String position, Double regularHourlyRate, Double overtimeMultiplier,
+    public Programmer(Integer id, String name, String position, Double regularHourlyRate, Integer actualHours, Double overtimeMultiplier,
                       Double projectPercent) {
-        super(id, name, position, regularHourlyRate, overtimeMultiplier, projectPercent);
+        super(id, name, position, regularHourlyRate, actualHours, overtimeMultiplier, projectPercent);
     }
 
-    public Programmer(Integer id, String name, String position, Double regularHourlyRate, Double actualHours) {
+    public Programmer(Integer id, String name, String position, Double regularHourlyRate, Integer actualHours) {
         super(id, name, position, regularHourlyRate, actualHours);
     }
 

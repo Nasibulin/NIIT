@@ -1,6 +1,6 @@
 package javalab4;
 
-public class Employee implements Comparable<Employee> {
+public class Employee implements Comparable<Employee>,WorkTime,ProjectShare {
 
     private static final int WORKDAY_DURATION = 8;
     private static int businessDays;
@@ -10,8 +10,8 @@ public class Employee implements Comparable<Employee> {
     private String position;
     private double salary;
     private double hourlyRate;
-    private double actualHours;
-    private double actualDays;
+    private int actualHours;
+    private int actualDays;
 
     public Employee(Integer id, String name, String position, Double hourlyRate) {
         this.id = id;
@@ -20,7 +20,7 @@ public class Employee implements Comparable<Employee> {
         this.hourlyRate = hourlyRate;
     }
 
-    public Employee(Integer id, String name, String position, Double hourlyRate, Double actualHours) {
+    public Employee(Integer id, String name, String position, Double hourlyRate, Integer actualHours) {
         this.id = id;
         this.name = name;
         this.position = position;
@@ -58,7 +58,7 @@ public class Employee implements Comparable<Employee> {
         return position;
     }
 
-    public Double getHourlyRate() {
+    public double getHourlyRate() {
         return hourlyRate;
     }
 
@@ -66,24 +66,26 @@ public class Employee implements Comparable<Employee> {
         return hourlyRate * actualHours;
     }
 
-    public double getActualHours() {
+
+    public int getActualHours() {
         return actualHours;
     }
 
-    public void setActualHours(double actualHours) {
+    public void setActualHours(int actualHours) {
         this.actualHours = actualHours;
         this.actualDays = actualHours / WORKDAY_DURATION;
     }
 
-    public double getActualDays() {
+    public int getActualDays() {
         return actualDays;
     }
 
-    public void setActualDays(double actualDays) {
+    public void setActualDays(int actualDays) {
         this.actualDays = actualDays;
         this.actualDays = actualHours / WORKDAY_DURATION;
     }
 
+    @Override
     public String toString() {
         return name;
     }

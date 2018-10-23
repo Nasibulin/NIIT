@@ -2,9 +2,6 @@ package javalab4;
 
 public class Engineer extends Employee implements ProjectShare, WorkTime {
 
-    private double regularHourlyRate;
-    private double actualHours;
-    private double basicSalary;
     private double projectBonus;
     private double overtimeSalary;
     private double overtimeHours;
@@ -13,51 +10,39 @@ public class Engineer extends Employee implements ProjectShare, WorkTime {
     private Project project;
 
 
-    public Engineer(Integer id, String name, String position, Double regularHourlyRate, Double overtimeMultiplier,
+    public Engineer(Integer id, String name, String position, Double regularHourlyRate, Integer actualHours,
+                    Double overtimeMultiplier,
                     Double projectPercent) {
-        super(id, name, position, regularHourlyRate);
-        this.regularHourlyRate = regularHourlyRate;
+        super(id, name, position, regularHourlyRate, actualHours);
         this.overtimeMultiplier = overtimeMultiplier;
         this.projectPercent = projectPercent;
     }
 
-    public Engineer(Integer id, String name, String position, Double regularHourlyRate, Double actualHours) {
+    public Engineer(Integer id, String name, String position, Double regularHourlyRate, Integer actualHours) {
         super(id, name, position, regularHourlyRate, actualHours);
-        this.actualHours=actualHours;
-        this.regularHourlyRate=regularHourlyRate;
+
     }
 
     public double getProjectBonus() {
-
-        return project.getBudget() * projectPercent;
+        projectBonus = ((project == null) ? 0 : project.getBudget()) * projectPercent;
+        return projectBonus;
 
     }
 
+    @Override
     public double getBasicSalary() {
-        basicSalary = actualHours * regularHourlyRate;
-        return basicSalary;
+        return super.getActualHours() * super.getHourlyRate();
     }
 
-    public double getOvertimeSalary(double overtimeHours) {
-
-        overtimeSalary = overtimeHours * overtimeMultiplier * regularHourlyRate;
-        return overtimeSalary;
-    }
-
+    @Override
     public double getOvertimeSalary() {
+        overtimeSalary = overtimeHours * overtimeMultiplier * super.getHourlyRate();
         return overtimeSalary;
     }
 
-    public double getSalary(double actualHours, double overtimeHours, Project project) {
-        return getBasicSalary() + getOvertimeSalary(overtimeHours) + getProjectBonus();
-    }
-
-    public double getSalary(double actualHours, double overtimeHours) {
-        return getBasicSalary() + getOvertimeSalary(overtimeHours);
-    }
-
+    @Override
     public double getSalary() {
-        return getBasicSalary()+getOvertimeSalary();
+        return getBasicSalary() + getOvertimeSalary() + getProjectBonus();
     }
 
     public void setProject(Project project) {

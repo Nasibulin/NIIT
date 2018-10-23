@@ -6,15 +6,15 @@ public class TeamLeader extends Programmer implements Heading {
     private int subordinatesQty;
     private double headRate;
 
-    public TeamLeader(Integer id, String name, String position, Double regularHourlyRate, Double overtimeHours,
+    public TeamLeader(Integer id, String name, String position, Double regularHourlyRate, Integer actualHours, Double overtimeHours,
                       Double overtimeMultiplier, Double projectPercent, Integer subordinatesQty, Double headRate) {
-        super(id, name, position, regularHourlyRate, overtimeMultiplier, projectPercent);
+        super(id, name, position, regularHourlyRate,actualHours,overtimeMultiplier, projectPercent);
         this.headBonus = headBonus;
         this.subordinatesQty = subordinatesQty;
         this.headRate = headRate;
     }
 
-    public TeamLeader(Integer id, String name, String position, Double regularHourlyRate, Double actualHours) {
+    public TeamLeader(Integer id, String name, String position, Double regularHourlyRate, Integer actualHours) {
         super(id, name, position, regularHourlyRate, actualHours);
     }
 
