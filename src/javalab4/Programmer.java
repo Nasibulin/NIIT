@@ -7,8 +7,8 @@ public class Programmer extends Engineer {
         super(id, name, position, regularHourlyRate, overtimeMultiplier, projectPercent);
     }
 
-    public Programmer(Integer id, String name, String position, Double regularHourlyRate) {
-        super(id, name, position, regularHourlyRate);
+    public Programmer(Integer id, String name, String position, Double regularHourlyRate, Double actualHours) {
+        super(id, name, position, regularHourlyRate, actualHours);
     }
 
 }

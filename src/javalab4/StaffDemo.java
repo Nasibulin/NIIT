@@ -10,10 +10,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -29,8 +26,8 @@ public class StaffDemo {
     private static HashMap<String, String> jobToClass;
     //    static StaffDemo s = new StaffDemo();
 //    static String PACKAGE_PREFIX = s.getClass().getPackage().getName()+'.';
-    private List<Employee> staff = new ArrayList<Employee>();
-    private HashMap<Integer, String> pos = new HashMap<Integer, String>();
+    private static List<Employee> staff = new ArrayList<Employee>();
+    private static HashMap<Integer, String> pos = new HashMap<Integer, String>();
     static {
         jobToClass = new HashMap<String, String>();
         jobToClass.put("Уборщица", "Cleaner");
@@ -50,8 +47,9 @@ public class StaffDemo {
         Employee.setBusinessHours(176);
         sd.setUpPositions();
         sd.setUpStaff();
-        for (Employee e : sd.staff) {
-            System.out.println(e.getId() + "\t" + e.getName() + "\t" + e.getPosition() + "\t" + e.getSalary());
+        Collections.sort(staff);
+        for (Employee e : staff) {
+            System.out.println(e.getId() + "\t" + e.getName() + "\t" + e.getPosition() + "\t" + e.getActualHours()+"\t" + e.getHourlyRate()+"\t"+e.getSalary());
         }
 
     }
@@ -100,14 +98,16 @@ public class StaffDemo {
             while (iterator.hasNext()) {
                 iterator.next();
                 JSONObject staffData = (JSONObject) staffArray.get(i);
-                Integer id = ((Long) staffData.get("staff_id")).intValue();
+                int id = ((Long) staffData.get("staff_id")).intValue();
                 String fio = (String) staffData.get("fio");
-                Integer position = ((Long) staffData.get("position")).intValue();
-                Double hourly_rate = ((Long) (staffData.get("hourly_rate") == null ? 0L : staffData.get("hourly_rate"))).doubleValue();
+                int position = ((Long) staffData.get("position")).intValue();
+                double hourly_rate = ((Long) (staffData.get("hourly_rate") == null ? 0L : staffData.get("hourly_rate"))).doubleValue();
+                double actual_hours = ((Long) (staffData.get("actual_hours") == null ? 0L : staffData.get("actual_hours"))).doubleValue();
 
                 Class<?> localstaff = Class.forName(PACKAGE_PREFIX + jobToClass.get(pos.get(position)));
-                Constructor<?> ctor = localstaff.getConstructor(Integer.class, String.class, String.class, Double.class);
-                Object object = ctor.newInstance(new Object[]{id, fio, pos.get(position), hourly_rate});
+                Constructor<?> ctor = localstaff.getConstructor(Integer.class, String.class, String.class, Double.class, Double.class);
+                //Object object = ctor.newInstance(new Object[]{id, fio, pos.get(position), hourly_rate});
+                Object object = ctor.newInstance(new Object[]{id, fio, pos.get(position), hourly_rate,actual_hours });
                 staff.add((Employee) object);
                 i++;
             }

@@ -2,81 +2,89 @@
 	"Staff": [
 			{
 				"staff_id": 10,
-				"fio": "Кардашин Виталий Олегович",
+				"fio": "Максимов Андрей Александрович",
 				"position": 6,
 				"project": 3
 			}, {
 				"staff_id": 11,
-				"fio": "Карманов Александр Вячеславович",
+				"fio": "Тронин Дмитрий Валерьевич",
 				"position": 7,
 				"project": 3
 			}, {
 				"staff_id": 12,
-				"fio": "Киреев Евгений Николаевич",
+				"fio": "Оганян Роберт Владимирович",
 				"position": 8,
 				"project": 1
 			}, {
 				"staff_id": 13,
-				"fio": "Кириллов Сергей Александрович",
+				"fio": "Чесноков Артём Андреевич",
 				"position": 6,
 				"project": 1
 			}, {
 				"staff_id": 2,
-				"fio": "Ершов Михаил Владимирович",
+				"fio": "Созинов Алексей Павлович",
 				"position": 2,
-				"hourly_rate": 200
+				"hourly_rate": 200,
+				"actual_hours": 176
 			}, {
 				"staff_id": 3,
-				"fio": "Желтышева Анна Сергеевна",
+				"fio": "Горбунова Валерия Игоревна",
 				"position": 9,
 				"project": 1,
-				"hourly_rate": 500
+				"hourly_rate": 500,
+				"actual_hours": 176
 			}, {
 				"staff_id": 4,
-				"fio": "Зеленцов Александр Сергеевич",
-				"position": 9,
-				"project": 1,
-				"hourly_rate": 500
+				"fio": "Еремина Алёна Сергеевна",
+				"position": 1,
+				"hourly_rate": 150,
+				"actual_hours": 88
 			}, {
 				"staff_id": 5,
-				"fio": "Золотов Сергей Александрович",
-				"position": 3,
+				"fio": "Рухович Игорь Владимирович",
+				"position": 9,
 				"project": 2,
-				"hourly_rate": 500
+				"hourly_rate": 500,
+				"actual_hours": 176
 			}, {
 				"staff_id": 6,
-				"fio": "Зубова Яна Федоровна",
-				"position": 1,
-				"hourly_rate": 150
+				"fio": "Гаврилов Никита Ильич",
+				"position": 2,
+				"hourly_rate": 200,
+				"actual_hours": 176
 			}, {
 				"staff_id": 7,
-				"fio": "Игошина Наталья Васильевна",
+				"fio": "Визгалов Антон Игоревич",
 				"position": 3,
 				"project": 2,
-				"hourly_rate": 500
+				"hourly_rate": 500,
+				"actual_hours": 160
 			}, {
 				"staff_id": 8,
-				"fio": "Калашников Сергей Александрович",
+				"fio": "Ермолин Дмитрий Алексеевич",
 				"position": 5,
 				"project": 2,
-				"hourly_rate": 600
+				"hourly_rate": 600,
+				"actual_hours": 168
 			}, {
 				"staff_id": 9,
-				"fio": "Каменев Дмитрий Михайлович",
+				"fio": "Новиков Данил Максимович",
 				"position": 7,
 				"project": 3
 			}, {
 				"staff_id": 14,
-				"fio": "Комиссаров Александр Александрович",
+				"fio": "Злобин Георгий Максимович",
 				"position": 3,
 				"project": 2,
-				"hourly_rate": 500
+				"hourly_rate": 500,
+				"actual_hours": 176
 			}, {
 				"staff_id": 15,
-				"fio": "Копчёнов Демьян Владимирович",
+				"fio": "Кустова Анастасия Игоревна",
 				"position": 9,
 				"project": 2,
-				"hourly_rate": 500
+				"hourly_rate": 500,
+				"actual_hours": 176
 			}
 		],
 		"Positions": [
@@ -112,15 +120,15 @@
 		"Projects": [
 			{
 				"id": 1,
-				"subject": "Windows 10",
+				"title": "Windows 10",
 				"budget": 1500000
 			}, {
 				"id": 2,
-				"subject": "Facebook",
+				"title": "Facebook",
 				"budget": 1200000
 			}, {
 				"id": 3,
-				"subject": "WhatsUp",
+				"title": "WhatsUp",
 				"budget": 1400000
 			}
 		]

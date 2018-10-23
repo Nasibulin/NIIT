@@ -3,6 +3,7 @@ package javalab4;
 public class Engineer extends Employee implements ProjectShare, WorkTime {
 
     private double regularHourlyRate;
+    private double actualHours;
     private double basicSalary;
     private double projectBonus;
     private double overtimeSalary;
@@ -20,8 +21,10 @@ public class Engineer extends Employee implements ProjectShare, WorkTime {
         this.projectPercent = projectPercent;
     }
 
-    public Engineer(Integer id, String name, String position, Double regularHourlyRate) {
-        super(id, name, position, regularHourlyRate);
+    public Engineer(Integer id, String name, String position, Double regularHourlyRate, Double actualHours) {
+        super(id, name, position, regularHourlyRate, actualHours);
+        this.actualHours=actualHours;
+        this.regularHourlyRate=regularHourlyRate;
     }
 
     public double getProjectBonus() {
@@ -30,7 +33,7 @@ public class Engineer extends Employee implements ProjectShare, WorkTime {
 
     }
 
-    public double getBasicSalary(double actualHours) {
+    public double getBasicSalary() {
         basicSalary = actualHours * regularHourlyRate;
         return basicSalary;
     }
@@ -46,15 +49,15 @@ public class Engineer extends Employee implements ProjectShare, WorkTime {
     }
 
     public double getSalary(double actualHours, double overtimeHours, Project project) {
-        return getBasicSalary(actualHours) + getOvertimeSalary(overtimeHours) + getProjectBonus();
+        return getBasicSalary() + getOvertimeSalary(overtimeHours) + getProjectBonus();
     }
 
     public double getSalary(double actualHours, double overtimeHours) {
-        return getBasicSalary(actualHours) + getOvertimeSalary(overtimeHours);
+        return getBasicSalary() + getOvertimeSalary(overtimeHours);
     }
 
-    public double getSalary(double actualHours) {
-        return getBasicSalary(actualHours);
+    public double getSalary() {
+        return getBasicSalary()+getOvertimeSalary();
     }
 
     public void setProject(Project project) {

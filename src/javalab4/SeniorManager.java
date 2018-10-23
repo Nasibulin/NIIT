@@ -7,8 +7,8 @@ public class SeniorManager extends ProjectManager {
         super(id, name, position, projectPercent, subordinatesQty, subordinatesRate);
     }
 
-    public SeniorManager(Integer id, String name, String position, Double hourlyRate) {
-        super(id, name, position, hourlyRate);
+    public SeniorManager(Integer id, String name, String position, Double hourlyRate, Double actualHours) {
+        super(id, name, position, hourlyRate, actualHours);
     }
 
 

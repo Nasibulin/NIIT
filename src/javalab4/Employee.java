@@ -1,17 +1,17 @@
 package javalab4;
 
-public class Employee {
+public class Employee implements Comparable<Employee> {
 
-    private Integer id;
+    private static final int WORKDAY_DURATION = 8;
+    private static int businessDays;
+    private static int businessHours;
+    private int id;
     private String name;
     private String position;
     private double salary;
-    private Double hourlyRate;
+    private double hourlyRate;
     private double actualHours;
-    private Double actualDays;
-    private static int businessDays;
-    private static int businessHours;
-    private static final int WORKDAY_DURATION = 8;
+    private double actualDays;
 
     public Employee(Integer id, String name, String position, Double hourlyRate) {
         this.id = id;
@@ -20,44 +20,12 @@ public class Employee {
         this.hourlyRate = hourlyRate;
     }
 
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getPosition() {
-        return position;
-    }
-
-    public Double getHourlyRate() {
-        return hourlyRate;
-    }
-
-    public double getSalary() {
-        return hourlyRate*businessHours;
-    }
-
-
-    public double getActualHours() {
-        return actualHours;
-    }
-
-    public void setActualHours(double actualHours) {
+    public Employee(Integer id, String name, String position, Double hourlyRate, Double actualHours) {
+        this.id = id;
+        this.name = name;
+        this.position = position;
+        this.hourlyRate = hourlyRate;
         this.actualHours = actualHours;
-        this.actualDays = actualHours / WORKDAY_DURATION;
-    }
-
-    public double getActualDays() {
-        return actualDays;
-    }
-
-    public void setActualDays(double actualDays) {
-        this.actualDays = actualDays;
-        this.actualDays = actualHours / WORKDAY_DURATION;
     }
 
     public static int getBusinessDays() {
@@ -78,7 +46,54 @@ public class Employee {
         businessDays = businessHours / WORKDAY_DURATION;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public Double getHourlyRate() {
+        return hourlyRate;
+    }
+
+    public double getSalary() {
+        return hourlyRate * actualHours;
+    }
+
+    public double getActualHours() {
+        return actualHours;
+    }
+
+    public void setActualHours(double actualHours) {
+        this.actualHours = actualHours;
+        this.actualDays = actualHours / WORKDAY_DURATION;
+    }
+
+    public double getActualDays() {
+        return actualDays;
+    }
+
+    public void setActualDays(double actualDays) {
+        this.actualDays = actualDays;
+        this.actualDays = actualHours / WORKDAY_DURATION;
+    }
+
     public String toString() {
         return name;
+    }
+
+    @Override
+    public int compareTo(Employee o) {
+        if (this.getId() < o.getId()) {
+            return -1;
+        } else {
+            return 1;
+        }
     }
 }

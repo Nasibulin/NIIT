@@ -13,20 +13,21 @@ public class Project {
     private int id;
     private String title;
     private double budget;
-    //private double engineersRatio;
-    //private double managersRatio;
-    private List<? extends Engineer> engineers;
-    private List<? extends Manager> managers;
+    private List<Engineer> engineers;
+    private List<Manager> managers;
 
     public Project(int id, String title, double budget) {
         this.id = id;
         this.title = title;
         this.budget = budget;
-        //this.engineersRatio = engineersRatio;
-        //this.managersRatio = managersRatio;
     }
 
     public double getBudget() {
         return budget;
     }
+
+    public String toString() {
+        return title;
+    }
+
 }
