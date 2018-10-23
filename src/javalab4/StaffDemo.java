@@ -157,21 +157,19 @@ public class StaffDemo {
                 staff.add(emp);
                 i++;
             }
-        } catch (FileNotFoundException e) {
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (NoSuchMethodException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (ParseException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (NoSuchMethodException e) {
+        } catch (InstantiationException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (InvocationTargetException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (InstantiationException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (IllegalAccessException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
 
