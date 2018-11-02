@@ -1,56 +1,76 @@
 package javalab5;
-/*
- * Programming graphical user interfaces
- * Example: AnalogClock.java
- * Jarkko Leponiemi 2003
- */
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.time.ZoneOffset;
 
 public class AnalogClock
         extends JComponent
-        implements Runnable
-{
+        implements Runnable {
 
-    public AnalogClock()
-    {
+    private static long MILLIS_IN_MINUTE = 60L * 1000L;
+    private static long MILLIS_IN_HOUR = MILLIS_IN_MINUTE * 60L;
+    private static long MILLIS_IN_HALF_DAY = MILLIS_IN_HOUR * 12L;
+    private static double SECS_IN_MINUTE_TO_ANGLE =
+            (2 * Math.PI / 60L);
+    private static double MILLIS_IN_HOUR_TO_ANGLE =
+            (2 * Math.PI / MILLIS_IN_HOUR);
+    private static double MILLIS_IN_HALF_DAY_TO_ANGLE =
+            (2 * Math.PI / MILLIS_IN_HALF_DAY);
+    private static Stroke SEC_STROKE = new BasicStroke();
+    private static Stroke MIN_STROKE =
+            new BasicStroke(2.5F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
+    private static Stroke HOUR_STROKE = MIN_STROKE;
+    private Dimension size = null;
+    private Insets insets = new Insets(0, 0, 0, 0);
+
+    public AnalogClock() {
         (new Thread(this)).start();
     }
 
-    public void run()
-    {
+    public static void main(String[] args) {
+
+        JFrame.setDefaultLookAndFeelDecorated(true);
+        JFrame f = new JFrame("Clock");
+        AnalogClock clock = new AnalogClock();
+        f.getContentPane().add(clock);
+        f.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+        });
+        f.setBounds(50, 50, 200, 200);
+        f.setOpacity(0.8F);
+        f.show();
+    }
+
+    public void run() {
         try {
-            for(;;)
-            {
+            for (; ; ) {
                 Thread.sleep(500);
                 repaint();
             }
-        }
-        catch (InterruptedException e)
-        {
+        } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
     }
 
-    public void paint(Graphics graphics)
-    {
+    public void paint(Graphics graphics) {
         super.paint(graphics);
 
         // calculate the time values
         //long t = System.currentTimeMillis();
-        long t = LocalDateTime.now().atZone(ZoneId.of("GMT+0")).toInstant().toEpochMilli();
+        long t = LocalDateTime.now().toInstant(ZoneOffset.ofHours(0)).toEpochMilli();
         //long t = (new Date()).getTime();
         // milliseconds in the current minute
         long minute = t % MILLIS_IN_MINUTE;
         // seconds in the current minute
         long secs_min = minute / 1000L;
         // milliseconds in the current hour
-        long hour = t %  MILLIS_IN_HOUR;
+        long hour = t % MILLIS_IN_HOUR;
         // milliseconds in the current half day
         long hday = t % MILLIS_IN_HALF_DAY;
 
@@ -93,39 +113,18 @@ public class AnalogClock
         // draw the perimeter
         g.setColor(Color.darkGray);
         g.drawOval(-radius + 2, -radius + 2, 2 * radius - 4, 2 * radius - 4);
-    }
 
-    private static long MILLIS_IN_MINUTE = 60L * 1000L;
-    private static long MILLIS_IN_HOUR = MILLIS_IN_MINUTE * 60L;
-    private static long MILLIS_IN_HALF_DAY = MILLIS_IN_HOUR * 12L;
+        //draw the hour markers
+        for (int i = 0; i < 12; i++) {
 
-    private static double SECS_IN_MINUTE_TO_ANGLE =
-            (2 * Math.PI / 60L);
-    private static double MILLIS_IN_HOUR_TO_ANGLE =
-            (2 * Math.PI / MILLIS_IN_HOUR);
-    private static double MILLIS_IN_HALF_DAY_TO_ANGLE =
-            (2 * Math.PI / MILLIS_IN_HALF_DAY);
+            g.setColor(Color.black);
+            g.setStroke(SEC_STROKE);
+            g.drawLine(0, radius - 2, 0, radius - 7);
+            g.rotate(Math.PI / 6);
 
-    private static Stroke SEC_STROKE = new BasicStroke();
-    private static Stroke MIN_STROKE =
-            new BasicStroke(2.5F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
-    private static Stroke HOUR_STROKE = MIN_STROKE;
+        }
 
-    private Dimension size = null;
-    private Insets insets = new Insets(0, 0, 0, 0);
 
-    public static void main(String[] args)
-    {
-        JFrame f = new JFrame("Clock");
-        AnalogClock clock = new AnalogClock();
-        f.getContentPane().add(clock);
-        f.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                System.exit(0);
-            }
-        });
-        f.setBounds(50, 50, 200, 200);
-        f.show();
     }
 
 }
