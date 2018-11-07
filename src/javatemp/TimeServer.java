@@ -5,14 +5,13 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.time.LocalDateTime;
 
-class ServerElement extends Thread {
-    private Socket socket;
+class Server1 extends Thread {
+    private final Socket socket;
     private BufferedReader in;
-    private BufferedReader inc;
     private PrintWriter out;
 
-    public ServerElement(Socket s) throws IOException {
-        socket = s;
+    public Server1(Socket socket) throws IOException {
+        this.socket = socket;
         in = new BufferedReader(
                 new InputStreamReader(
                         socket.getInputStream()));
@@ -20,32 +19,26 @@ class ServerElement extends Thread {
                 new BufferedWriter(
                         new OutputStreamWriter(
                                 socket.getOutputStream())), true);
-        inc  = new BufferedReader(
-                new InputStreamReader(socket.getInputStream()));
-
         start();
     }
 
     public void run() {
         try {
-            String str;
-            while ((str = inc.readLine()) != null) {
-//                System.out.println(str);
-                if (str.equals("exit"))
-                    break;
-                System.out.println("Получен запрос времени от : " + socket.getInetAddress());
+            while (in.readLine() != null) {
+                System.err.println("Получен запрос времени от : " + (socket.getInetAddress()).getHostName());
                 out.println(LocalDateTime.now());
-                //out.flush();
             }
-            System.out.println("Соединение закрыто");
+            System.err.println("Соединение закрыто");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+
             try {
                 socket.close();
             } catch (IOException e) {
-                System.err.println("Сокет не закрыт");
+                e.printStackTrace();
             }
+
         }
     }
 }
@@ -60,7 +53,7 @@ public class TimeServer {
                 Socket socket = s.accept();
                 try {
                     System.out.println("Новое соединение установлено");
-                    new ServerElement(socket);
+                    new Server1(socket);
                 } catch (IOException e) {
                     socket.close();
                 }

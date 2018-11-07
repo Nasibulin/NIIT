@@ -14,30 +14,21 @@ public class Client {
     static String fuser = "gettime";
     static String fserver = "";
 
-    public static LocalDateTime dt() throws IOException {
+    public static LocalDateTime getDateTine() throws IOException {
 
-        Socket server = null;
-        server = new Socket(HOST, PORT);
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(server.getInputStream()));
-        PrintWriter out =
-                new PrintWriter(server.getOutputStream(), true);
-
-        while (!fuser.equals("exit")) {
+        try (
+                Socket server = new Socket(HOST, PORT);
+                BufferedReader in = new BufferedReader(new InputStreamReader(server.getInputStream()));
+                PrintWriter out = new PrintWriter(server.getOutputStream(), true)
+        ) {
             out.println(fuser);
             fserver = in.readLine();
-            if (fuser.equalsIgnoreCase("exit"))
-                break;
-            fuser = "exit";
         }
-        out.close();
-        in.close();
-        server.close();
         return LocalDateTime.parse(fserver);
     }
 
     public static void main(String[] args) throws IOException {
-        System.out.println(dt());
-        System.out.println(dt().format(DateTimeFormatter.ofPattern("d MMMM uuuu HH:mm:ss.mm.SSS")));
+        System.out.println(getDateTine());
+        System.out.println(getDateTine().format(DateTimeFormatter.ofPattern("d MMMM uuuu HH:mm:ss.mm.SSS")));
     }
 }
