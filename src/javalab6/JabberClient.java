@@ -1,9 +1,9 @@
 package javalab6;
 
 //: c15:JabberClient.java
-// Очень простой клиент, который просто посылает
-// строки на сервер и читает строки,
-// посылаемые сервером.
+// РћС‡РµРЅСЊ РїСЂРѕСЃС‚РѕР№ РєР»РёРµРЅС‚, РєРѕС‚РѕСЂС‹Р№ РїСЂРѕСЃС‚Рѕ РїРѕСЃС‹Р»Р°РµС‚
+// СЃС‚СЂРѕРєРё РЅР° СЃРµСЂРІРµСЂ Рё С‡РёС‚Р°РµС‚ СЃС‚СЂРѕРєРё,
+// РїРѕСЃС‹Р»Р°РµРјС‹Рµ СЃРµСЂРІРµСЂРѕРј.
 // {RunByHand}
 import java.net.*;
 
@@ -11,25 +11,25 @@ import java.io.*;
 
 public class JabberClient {
     public static void main(String[] args) throws IOException {
-        // Передаем null в getByName(), получая
-        // специальный IP адрес "локальной заглушки"
-        // для тестирования на машине без сети:
+        // РџРµСЂРµРґР°РµРј null РІ getByName(), РїРѕР»СѓС‡Р°СЏ
+        // СЃРїРµС†РёР°Р»СЊРЅС‹Р№ IP Р°РґСЂРµСЃ "Р»РѕРєР°Р»СЊРЅРѕР№ Р·Р°РіР»СѓС€РєРё"
+        // РґР»СЏ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ РЅР° РјР°С€РёРЅРµ Р±РµР· СЃРµС‚Рё:
         InetAddress addr = InetAddress.getByName(null);
-        // Альтернативно, вы можете использовать
-        // адрес или имя:
+        // РђР»СЊС‚РµСЂРЅР°С‚РёРІРЅРѕ, РІС‹ РјРѕР¶РµС‚Рµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ
+        // Р°РґСЂРµСЃ РёР»Рё РёРјСЏ:
         // InetAddress addr =
         // InetAddress.getByName("127.0.0.1");
         // InetAddress addr =
         // InetAddress.getByName("localhost");
         System.out.println("addr = " + addr);
         Socket socket = new Socket(addr, JabberServer.PORT);
-        // Помещаем все в блок try-finally, чтобы
-        // быть уверенным, что сокет закроется:
+        // РџРѕРјРµС‰Р°РµРј РІСЃРµ РІ Р±Р»РѕРє try-finally, С‡С‚РѕР±С‹
+        // Р±С‹С‚СЊ СѓРІРµСЂРµРЅРЅС‹Рј, С‡С‚Рѕ СЃРѕРєРµС‚ Р·Р°РєСЂРѕРµС‚СЃСЏ:
         try {
             System.out.println("socket = " + socket);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket
                                                                                  .getInputStream()));
-            // Вывод автоматически Output быталкивается PrintWriter'ом.
+            // Р’С‹РІРѕРґ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё Output Р±С‹С‚Р°Р»РєРёРІР°РµС‚СЃСЏ PrintWriter'РѕРј.
             PrintWriter out = new PrintWriter(new BufferedWriter(
                     new OutputStreamWriter(socket.getOutputStream())), true);
             for (int i = 0; i < 10; i++) {

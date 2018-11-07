@@ -1,23 +1,21 @@
 package javalab6;
 
-import java.io.Closeable;
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.time.LocalDateTime;
 import java.util.logging.Logger;
 
 public class Example {
+
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         try (ObjectEchoServer server = new ObjectEchoServer("127.0.0.1", 1234);
              Client client = new Client("127.0.0.1", 1234);) {
             Message message = new Message("qwerty", 12345);
-            client.sendObject(message);
+            //client.sendObject(message);
+            client.sendObject(LocalDateTime.now());
             client.receiveObject();
         }
     }
@@ -56,7 +54,7 @@ public class Example {
         public Object receiveObject() throws IOException, ClassNotFoundException {
             ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
             Object object = ois.readObject();
-            log.info("Принят объект: " + object);
+            log.info("Принят объект: " + ((LocalDateTime)object).getDayOfWeek());
             return object;
         }
     }

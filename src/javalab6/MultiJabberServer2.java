@@ -1,7 +1,7 @@
 package javalab6;
 
 //: TIEJ:X1:MultiJabberServer2.java
-// Семантика аналогична MultiJabberServer1, с использованием пула нитей.
+// РЎРµРјР°РЅС‚РёРєР° Р°РЅР°Р»РѕРіРёС‡РЅР° MultiJabberServer1, СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј РїСѓР»Р° РЅРёС‚РµР№.
 // {RunByHand}
 import java.io.*;
 
@@ -55,10 +55,10 @@ class ServeOneJabber1 implements Runnable {
             }
         }
         catch (IOException e) {
-            // будет поймано Worker.java и залогировано.
-            // Необходимо выбросить исключение времени выполнения, так как мы не
-            // можем
-            // оставить IOException
+            // Р±СѓРґРµС‚ РїРѕР№РјР°РЅРѕ Worker.java Рё Р·Р°Р»РѕРіРёСЂРѕРІР°РЅРѕ.
+            // РќРµРѕР±С…РѕРґРёРјРѕ РІС‹Р±СЂРѕСЃРёС‚СЊ РёСЃРєР»СЋС‡РµРЅРёРµ РІСЂРµРјРµРЅРё РІС‹РїРѕР»РЅРµРЅРёСЏ, С‚Р°Рє РєР°Рє РјС‹ РЅРµ
+            // РјРѕР¶РµРј
+            // РѕСЃС‚Р°РІРёС‚СЊ IOException
             throw new RuntimeException(e);
         }
         finally {
@@ -67,7 +67,7 @@ class ServeOneJabber1 implements Runnable {
             }
             catch (IOException e) {
                 System.out.println("Channel not closed.");
-                // Выбрасываем это, чтобы рабочая нить могла залогировать.
+                // Р’С‹Р±СЂР°СЃС‹РІР°РµРј СЌС‚Рѕ, С‡С‚РѕР±С‹ СЂР°Р±РѕС‡Р°СЏ РЅРёС‚СЊ РјРѕРіР»Р° Р·Р°Р»РѕРіРёСЂРѕРІР°С‚СЊ.
                 throw new RuntimeException(e);
             }
         }
@@ -78,7 +78,7 @@ public class MultiJabberServer2 {
     public static final int PORT = 8080;
     private static String encoding = System.getProperty("file.encoding");
     public static final Charset CS = Charset.forName(encoding);
-    // Создаем пул нитей с 20 рабочими нитями.
+    // РЎРѕР·РґР°РµРј РїСѓР» РЅРёС‚РµР№ СЃ 20 СЂР°Р±РѕС‡РёРјРё РЅРёС‚СЏРјРё.
     private static ThreadPool pool = new ThreadPool(20);
 
     public static void main(String[] args) throws IOException {
@@ -100,7 +100,7 @@ public class MultiJabberServer2 {
                         System.out.println("Accepted connection from:"
                                                    + channel.socket());
                         channel.configureBlocking(false);
-                        // Отделяем события и ассоциированное действие
+                        // РћС‚РґРµР»СЏРµРј СЃРѕР±С‹С‚РёСЏ Рё Р°СЃСЃРѕС†РёРёСЂРѕРІР°РЅРЅРѕРµ РґРµР№СЃС‚РІРёРµ
                         pool.addTask(new ServeOneJabber1(channel));
                     }
                 }

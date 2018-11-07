@@ -1,8 +1,8 @@
 package javalab6;
 
 //: c15:MultiJabberClient.java
-// Клиент, который проверяет MultiJabberServer,
-// запуская несколько клиентов.
+// РљР»РёРµРЅС‚, РєРѕС‚РѕСЂС‹Р№ РїСЂРѕРІРµСЂСЏРµС‚ MultiJabberServer,
+// Р·Р°РїСѓСЃРєР°СЏ РЅРµСЃРєРѕР»СЊРєРѕ РєР»РёРµРЅС‚РѕРІ.
 // {RunByHand}
 import java.net.*;
 
@@ -28,20 +28,20 @@ class JabberClientThread extends Thread {
         }
         catch (IOException e) {
             System.err.println("Socket failed");
-            // Если создание сокета провалилось,
-            // ничего ненужно чистить.
+            // Р•СЃР»Рё СЃРѕР·РґР°РЅРёРµ СЃРѕРєРµС‚Р° РїСЂРѕРІР°Р»РёР»РѕСЃСЊ,
+            // РЅРёС‡РµРіРѕ РЅРµРЅСѓР¶РЅРѕ С‡РёСЃС‚РёС‚СЊ.
         }
         try {
             in = new BufferedReader(new InputStreamReader(socket
                                                                   .getInputStream()));
-            // Включаем автоматическое выталкивание:
+            // Р’РєР»СЋС‡Р°РµРј Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРѕРµ РІС‹С‚Р°Р»РєРёРІР°РЅРёРµ:
             out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(
                     socket.getOutputStream())), true);
             start();
         }
         catch (IOException e) {
-            // Сокет должен быть закрыт при любой
-            // ошибке, кроме ошибки конструктора сокета:
+            // РЎРѕРєРµС‚ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ Р·Р°РєСЂС‹С‚ РїСЂРё Р»СЋР±РѕР№
+            // РѕС€РёР±РєРµ, РєСЂРѕРјРµ РѕС€РёР±РєРё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° СЃРѕРєРµС‚Р°:
             try {
                 socket.close();
             }
@@ -49,8 +49,8 @@ class JabberClientThread extends Thread {
                 System.err.println("Socket not closed");
             }
         }
-        // В противном случае сокет будет закрыт
-        // в методе run() нити.
+        // Р’ РїСЂРѕС‚РёРІРЅРѕРј СЃР»СѓС‡Р°Рµ СЃРѕРєРµС‚ Р±СѓРґРµС‚ Р·Р°РєСЂС‹С‚
+        // РІ РјРµС‚РѕРґРµ run() РЅРёС‚Рё.
     }
 
     public void run() {
@@ -66,14 +66,14 @@ class JabberClientThread extends Thread {
             System.err.println("IO Exception");
         }
         finally {
-            // Всегда закрывает:
+            // Р’СЃРµРіРґР° Р·Р°РєСЂС‹РІР°РµС‚:
             try {
                 socket.close();
             }
             catch (IOException e) {
                 System.err.println("Socket not closed");
             }
-            threadcount--; // Завершаем эту нить
+            threadcount--; // Р—Р°РІРµСЂС€Р°РµРј СЌС‚Сѓ РЅРёС‚СЊ
         }
     }
 }

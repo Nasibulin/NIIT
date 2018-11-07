@@ -1,28 +1,28 @@
 package javalab6;
 
 //: c15:JabberServer.java
-// Очень простой сервер, который просто отсылает
-// назад все, что посылает клиент.
+// РћС‡РµРЅСЊ РїСЂРѕСЃС‚РѕР№ СЃРµСЂРІРµСЂ, РєРѕС‚РѕСЂС‹Р№ РїСЂРѕСЃС‚Рѕ РѕС‚СЃС‹Р»Р°РµС‚
+// РЅР°Р·Р°Рґ РІСЃРµ, С‡С‚Рѕ РїРѕСЃС‹Р»Р°РµС‚ РєР»РёРµРЅС‚.
 // {RunByHand}
 import java.io.*;
 
 import java.net.*;
 
 public class JabberServer {
-    // Выбираем порт вне пределов 1-1024:
+    // Р’С‹Р±РёСЂР°РµРј РїРѕСЂС‚ РІРЅРµ РїСЂРµРґРµР»РѕРІ 1-1024:
     public static final int PORT = 8080;
 
     public static void main(String[] args) throws IOException {
         ServerSocket s = new ServerSocket(PORT);
         System.out.println("Started: " + s);
         try {
-            // Блокирует до тех пор, пока не возникнет соединение:
+            // Р‘Р»РѕРєРёСЂСѓРµС‚ РґРѕ С‚РµС… РїРѕСЂ, РїРѕРєР° РЅРµ РІРѕР·РЅРёРєРЅРµС‚ СЃРѕРµРґРёРЅРµРЅРёРµ:
             Socket socket = s.accept();
             try {
                 System.out.println("Connection accepted: " + socket);
                 BufferedReader in = new BufferedReader(new InputStreamReader(
                         socket.getInputStream()));
-                // Вывод автоматически выталкивается из буфера PrintWriter'ом
+                // Р’С‹РІРѕРґ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё РІС‹С‚Р°Р»РєРёРІР°РµС‚СЃСЏ РёР· Р±СѓС„РµСЂР° PrintWriter'РѕРј
                 PrintWriter out = new PrintWriter(new BufferedWriter(
                         new OutputStreamWriter(socket.getOutputStream())), true);
                 while (true) {
@@ -32,7 +32,7 @@ public class JabberServer {
                     System.out.println("Echoing: " + str);
                     out.println(str);
                 }
-                // Всегда закрываем два сокета...
+                // Р’СЃРµРіРґР° Р·Р°РєСЂС‹РІР°РµРј РґРІР° СЃРѕРєРµС‚Р°...
             }
             finally {
                 System.out.println("closing...");
