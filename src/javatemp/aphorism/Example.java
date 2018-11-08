@@ -1,7 +1,5 @@
 package javatemp.aphorism;
 
-import sharukh.forismatic.Quote;
-import sharukh.forismatic.QuoteBuilder;
 
 public class Example
 {

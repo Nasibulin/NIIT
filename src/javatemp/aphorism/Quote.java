@@ -1,11 +1,17 @@
 package javatemp.aphorism;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Konstantin
- * Date: 08.11.18
- * Time: 21:14
- * To change this template use File | Settings | File Templates.
- */
-public class Quote {
+public class Quote
+{
+    public String rawJsonString;
+    public String quoteText;
+    public String quoteAuthor;
+    public String senderName;
+    public String senderLink;
+    public String quoteLink;
+
+    @Override
+    public String toString()
+    {
+        return rawJsonString;
+    }
 }
