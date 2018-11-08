@@ -42,7 +42,7 @@ class Server1 implements Runnable {
 }
 
 public class TimeServer {
-    static final int PORT = 1234;
+    static final int PORT = 8080;
 
     public static void main(String[] args) throws IOException {
         System.out.println("Мультипоточный сервер стартовал");
