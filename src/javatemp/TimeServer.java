@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.time.LocalDateTime;
 
-class Server1 extends Thread {
+class Server1 implements Runnable {
     private final Socket socket;
     private BufferedReader in;
     private PrintWriter out;
@@ -19,7 +19,7 @@ class Server1 extends Thread {
                 new BufferedWriter(
                         new OutputStreamWriter(
                                 socket.getOutputStream())), true);
-        start();
+        run();
     }
 
     public void run() {
@@ -32,13 +32,11 @@ class Server1 extends Thread {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-
             try {
                 socket.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
     }
 }
@@ -53,7 +51,7 @@ public class TimeServer {
                 Socket socket = s.accept();
                 try {
                     System.out.println("Новое соединение установлено");
-                    new Server1(socket);
+                    new Thread(new Server1(socket));
                 } catch (IOException e) {
                     socket.close();
                 }
