@@ -1,5 +1,6 @@
 package exchange;
 
+import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -32,6 +33,8 @@ ComboBox<Currency> cmb2;
 ChoiceBox<Currency> chb1;
 @FXML
 ChoiceBox<Currency> chb2;
+@FXML
+JFXComboBox jfxComboBox;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -19,10 +20,9 @@
    <children>
       <Pane prefHeight="519.0" prefWidth="573.0">
          <children>
-            <ChoiceBox fx:id="chb1" layoutX="50.0" layoutY="76.0" prefWidth="150.0" />
-            <ChoiceBox fx:id="chb2" layoutX="235.0" layoutY="76.0" prefWidth="150.0" />
-            <ComboBox fx:id="cmb1" layoutX="50.0" layoutY="247.0" onAction="#smpl" prefWidth="150.0" />
-            <ComboBox fx:id="cmb2" layoutX="235.0" layoutY="247.0" prefWidth="150.0" />
+            <ComboBox layoutX="55.0" layoutY="55.0" prefWidth="150.0" />
+            <ComboBox fx:id="cmb2" layoutX="249.0" layoutY="55.0" prefWidth="150.0" />
+            <JFXComboBox fx:id="cmb1" layoutX="55.0" layoutY="93.0" onAction="#smpl" prefHeight="25.0" prefWidth="150.0" />
          </children>
       </Pane>
    </children>
