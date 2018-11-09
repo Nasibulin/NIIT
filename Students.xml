@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataroot xmlns:od="urn:schemas-microsoft-com:officedata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:noNamespaceSchemaLocation="Students.xsd" generated="2018-10-15T13:28:15">
+<Students>
+<ID>1</ID>
+<GROUP>1</GROUP>
+<STUDENT>Шерстнев Илья Игоревич</STUDENT>
+</Students>
+<Students>
+<ID>2</ID>
+<GROUP>1</GROUP>
+<STUDENT>Вагина Валерия Дмитриевна</STUDENT>
+</Students>
+<Students>
+<ID>3</ID>
+<GROUP>1</GROUP>
+<STUDENT>Алибеков Мурад Рамазанович</STUDENT>
+</Students>
+<Students>
+<ID>4</ID>
+<GROUP>1</GROUP>
+<STUDENT>Гладкая Милена Ростиславовна</STUDENT>
+</Students>
+<Students>
+<ID>5</ID>
+<GROUP>1</GROUP>
+<STUDENT>Емельховская Екатерина Евгеньевна</STUDENT>
+</Students>
+<Students>
+<ID>6</ID>
+<GROUP>1</GROUP>
+<STUDENT>Власов Максим Сергеевич</STUDENT>
+</Students>
+<Students>
+<ID>7</ID>
+<GROUP>1</GROUP>
+<STUDENT>Бакаева Мария Игоревна</STUDENT>
+</Students>
+<Students>
+<ID>8</ID>
+<GROUP>1</GROUP>
+<STUDENT>Макарычев Сергей Дмитриевич</STUDENT>
+</Students>
+<Students>
+<ID>9</ID>
+<GROUP>1</GROUP>
+<STUDENT>Касьянычев Михаил Петрович</STUDENT>
+</Students>
+<Students>
+<ID>10</ID>
+<GROUP>1</GROUP>
+<STUDENT>Макаров Александр Андреевич</STUDENT>
+</Students>
+<Students>
+<ID>11</ID>
+<GROUP>1</GROUP>
+<STUDENT>Соловьев Александр Юрьевич</STUDENT>
+</Students>
+<Students>
+<ID>12</ID>
+<GROUP>1</GROUP>
+<STUDENT>Напылов Евгений Игоревич</STUDENT>
+</Students>
+<Students>
+<ID>13</ID>
+<GROUP>1</GROUP>
+<STUDENT>Стрельцова Яна Дмитриевна</STUDENT>
+</Students>
+<Students>
+<ID>14</ID>
+<GROUP>1</GROUP>
+<STUDENT>Пронин Игорь Павлович</STUDENT>
+</Students>
+<Students>
+<ID>15</ID>
+<GROUP>1</GROUP>
+<STUDENT>Гогов Владислав Игоревич</STUDENT>
+</Students>
+<Students>
+<ID>16</ID>
+<GROUP>1</GROUP>
+<STUDENT>Тактаев Артем Андреевич</STUDENT>
+</Students>
+<Students>
+<ID>17</ID>
+<GROUP>1</GROUP>
+<STUDENT>Молоткова Светлана Сергеевна</STUDENT>
+</Students>
+<Students>
+<ID>18</ID>
+<GROUP>1</GROUP>
+<STUDENT>Лютова Татьяна Сергеевна</STUDENT>
+</Students>
+<Students>
+<ID>19</ID>
+<GROUP>1</GROUP>
+<STUDENT>Шагов Максим Алексеевич</STUDENT>
+</Students>
+<Students>
+<ID>20</ID>
+<GROUP>1</GROUP>
+<STUDENT>Параничева Алена Владиславовна</STUDENT>
+</Students>
+<Students>
+<ID>21</ID>
+<GROUP>1</GROUP>
+<STUDENT>Пронькин Дмитрий Александрович</STUDENT>
+</Students>
+<Students>
+<ID>22</ID>
+<GROUP>1</GROUP>
+<STUDENT>Зореев Михаил Владимирович</STUDENT>
+</Students>
+<Students>
+<ID>23</ID>
+<GROUP>1</GROUP>
+<STUDENT>Клюев Дмитрий Андреевич</STUDENT>
+</Students>
+<Students>
+<ID>24</ID>
+<GROUP>1</GROUP>
+<STUDENT>Рустамов Азер Заур оглы</STUDENT>
+</Students>
+<Students>
+<ID>25</ID>
+<GROUP>1</GROUP>
+<STUDENT>Скрипаль Андрей Дмитриевич</STUDENT>
+</Students>
+<Students>
+<ID>26</ID>
+<GROUP>2</GROUP>
+<STUDENT>Созинов Алексей Павлович</STUDENT>
+</Students>
+<Students>
+<ID>27</ID>
+<GROUP>2</GROUP>
+<STUDENT>Горбунова Валерия Игоревна</STUDENT>
+</Students>
+<Students>
+<ID>28</ID>
+<GROUP>2</GROUP>
+<STUDENT>Еремина Алёна Сергеевна</STUDENT>
+</Students>
+<Students>
+<ID>29</ID>
+<GROUP>2</GROUP>
+<STUDENT>Рухович Игорь Владимирович</STUDENT>
+</Students>
+<Students>
+<ID>30</ID>
+<GROUP>2</GROUP>
+<STUDENT>Гаврилов Никита Ильич</STUDENT>
+</Students>
+<Students>
+<ID>31</ID>
+<GROUP>2</GROUP>
+<STUDENT>Визгалов Антон Игоревич</STUDENT>
+</Students>
+<Students>
+<ID>32</ID>
+<GROUP>2</GROUP>
+<STUDENT>Ермолин Дмитрий Алексеевич</STUDENT>
+</Students>
+<Students>
+<ID>33</ID>
+<GROUP>2</GROUP>
+<STUDENT>Новиков Данил Максимович</STUDENT>
+</Students>
+<Students>
+<ID>34</ID>
+<GROUP>2</GROUP>
+<STUDENT>Максимов Андрей Александрович</STUDENT>
+</Students>
+<Students>
+<ID>35</ID>
+<GROUP>2</GROUP>
+<STUDENT>Тронин Дмитрий Валерьевич</STUDENT>
+</Students>
+<Students>
+<ID>36</ID>
+<GROUP>2</GROUP>
+<STUDENT>Оганян Роберт Владимирович</STUDENT>
+</Students>
+<Students>
+<ID>37</ID>
+<GROUP>2</GROUP>
+<STUDENT>Чесноков Артём Андреевич</STUDENT>
+</Students>
+<Students>
+<ID>38</ID>
+<GROUP>2</GROUP>
+<STUDENT>Злобин Георгий Максимович</STUDENT>
+</Students>
+<Students>
+<ID>39</ID>
+<GROUP>2</GROUP>
+<STUDENT>Кустова Анастасия Игоревна</STUDENT>
+</Students>
+<Students>
+<ID>40</ID>
+<GROUP>2</GROUP>
+<STUDENT>Пестриков Илья Дмитриевич</STUDENT>
+</Students>
+<Students>
+<ID>41</ID>
+<GROUP>2</GROUP>
+<STUDENT>Анисимова Полина Викторовна</STUDENT>
+</Students>
+<Students>
+<ID>42</ID>
+<GROUP>2</GROUP>
+<STUDENT>Рачин Игорь Александрович</STUDENT>
+</Students>
+<Students>
+<ID>43</ID>
+<GROUP>2</GROUP>
+<STUDENT>Кочанков Илья Дмитриевич</STUDENT>
+</Students>
+<Students>
+<ID>44</ID>
+<GROUP>2</GROUP>
+<STUDENT>Воронин Алексей Андреевич</STUDENT>
+</Students>
+<Students>
+<ID>45</ID>
+<GROUP>2</GROUP>
+<STUDENT>Красильников Алексей Владимирович</STUDENT>
+</Students>
+<Students>
+<ID>46</ID>
+<GROUP>2</GROUP>
+<STUDENT>Камсков Евгений Маратович</STUDENT>
+</Students>
+<Students>
+<ID>47</ID>
+<GROUP>2</GROUP>
+<STUDENT>Бурмистрова Екатерина Олеговна</STUDENT>
+</Students>
+<Students>
+<ID>48</ID>
+<GROUP>2</GROUP>
+<STUDENT>Сандалов Константин Юрьевич</STUDENT>
+</Students>
+<Students>
+<ID>49</ID>
+<GROUP>2</GROUP>
+<STUDENT>Бойцов Владислав Александрович</STUDENT>
+</Students>
+<Students>
+<ID>50</ID>
+<GROUP>2</GROUP>
+<STUDENT>Фролова Ольга Сергеевна</STUDENT>
+</Students>
+<Students>
+<ID>51</ID>
+<GROUP>3</GROUP>
+<STUDENT>Пуртова Ксения Андреевна</STUDENT>
+</Students>
+<Students>
+<ID>52</ID>
+<GROUP>3</GROUP>
+<STUDENT>Мишин Илья Александрович</STUDENT>
+</Students>
+<Students>
+<ID>53</ID>
+<GROUP>3</GROUP>
+<STUDENT>Малов Степан Александрович</STUDENT>
+</Students>
+<Students>
+<ID>54</ID>
+<GROUP>3</GROUP>
+<STUDENT>Рылов Александр Дмитриевич</STUDENT>
+</Students>
+<Students>
+<ID>55</ID>
+<GROUP>3</GROUP>
+<STUDENT>Ремез Максим Александрович</STUDENT>
+</Students>
+<Students>
+<ID>56</ID>
+<GROUP>3</GROUP>
+<STUDENT>Сироткина Дарья Александровна</STUDENT>
+</Students>
+<Students>
+<ID>57</ID>
+<GROUP>3</GROUP>
+<STUDENT>Кузенкова Анастасия Евгеньевна</STUDENT>
+</Students>
+<Students>
+<ID>58</ID>
+<GROUP>3</GROUP>
+<STUDENT>Герасимов Михаил Алексеевич</STUDENT>
+</Students>
+<Students>
+<ID>59</ID>
+<GROUP>3</GROUP>
+<STUDENT>Ермолаев Илья Александрович</STUDENT>
+</Students>
+<Students>
+<ID>60</ID>
+<GROUP>3</GROUP>
+<STUDENT>Колесников Глеб Ростиславович</STUDENT>
+</Students>
+<Students>
+<ID>61</ID>
+<GROUP>3</GROUP>
+<STUDENT>Небукина Виктория Александровна</STUDENT>
+</Students>
+<Students>
+<ID>62</ID>
+<GROUP>3</GROUP>
+<STUDENT>Воденеев Михаил Владимирович</STUDENT>
+</Students>
+<Students>
+<ID>63</ID>
+<GROUP>3</GROUP>
+<STUDENT>Базарнов Владислав Дмитриевич</STUDENT>
+</Students>
+<Students>
+<ID>64</ID>
+<GROUP>3</GROUP>
+<STUDENT>Михайлова Екатерина Сергеевна</STUDENT>
+</Students>
+<Students>
+<ID>65</ID>
+<GROUP>3</GROUP>
+<STUDENT>Гондурова Дарья Владимировна</STUDENT>
+</Students>
+<Students>
+<ID>66</ID>
+<GROUP>3</GROUP>
+<STUDENT>Журилова Анастасия Сергеевна</STUDENT>
+</Students>
+<Students>
+<ID>67</ID>
+<GROUP>3</GROUP>
+<STUDENT>Кудрявцев Александр Сергеевич</STUDENT>
+</Students>
+<Students>
+<ID>68</ID>
+<GROUP>3</GROUP>
+<STUDENT>Сермяжко Елизавета Александровна</STUDENT>
+</Students>
+<Students>
+<ID>69</ID>
+<GROUP>3</GROUP>
+<STUDENT>Курникова Анастасия Александровна</STUDENT>
+</Students>
+<Students>
+<ID>70</ID>
+<GROUP>3</GROUP>
+<STUDENT>Коробкова Екатерина Валентиновна</STUDENT>
+</Students>
+<Students>
+<ID>71</ID>
+<GROUP>3</GROUP>
+<STUDENT>Шарипов Эмиль Маратович</STUDENT>
+</Students>
+<Students>
+<ID>72</ID>
+<GROUP>3</GROUP>
+<STUDENT>Мишина Валентина Валерьевна</STUDENT>
+</Students>
+<Students>
+<ID>73</ID>
+<GROUP>3</GROUP>
+<STUDENT>Лебедев Андрей Васильевич</STUDENT>
+</Students>
+<Students>
+<ID>74</ID>
+<GROUP>3</GROUP>
+<STUDENT>Серяков Андрей Сергеевич</STUDENT>
+</Students>
+<Students>
+<ID>75</ID>
+<GROUP>3</GROUP>
+<STUDENT>Моисеев Андрей Олегович</STUDENT>
+</Students>
+<Students>
+<ID>76</ID>
+<GROUP>3</GROUP>
+<STUDENT>Фонотов Владислав Сергеевич</STUDENT>
+</Students>
+<Students>
+<ID>77</ID>
+<GROUP>3</GROUP>
+<STUDENT>Рыбкин Антон Васильевич</STUDENT>
+</Students>
+<Students>
+<ID>78</ID>
+<GROUP>3</GROUP>
+<STUDENT>Попов Даниил Денисович</STUDENT>
+</Students>
+<Students>
+<ID>79</ID>
+<GROUP>3</GROUP>
+<STUDENT>Бондаренко Илья Вячеславович</STUDENT>
+</Students>
+</dataroot>
