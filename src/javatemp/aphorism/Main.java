@@ -1,38 +1,51 @@
 package javatemp.aphorism;
 
-import java.net.URL;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Main {
-    /**
-     * Для простоты и удобства используем уже сформированную строку
-     * с запросом погоды в Лондоне на данный момент
-     * <p>
-     * другие примеры запросов можете глянуть здесь
-     * {@see <a href="http://openweathermap.org/current">openweathermap</a>}
-     * также Вам понадобится свой API ключ
-     */
-    public static final String WEATHER_URL = "http://www.forismatic.com/api/1.0/method=getQuote&format=json";
-//            "http://api.openweathermap.org/data/2.5/weather?q=London,uk" +
-//                    "&units=metric&appid=241de9349721df959d8800c12ca4f1f3";
+    private static final String QUOTE_FILE = "db/quotes.txt";
+    private static List<String> quote = new ArrayList<>();
 
     public static void main(String[] args) {
-        // создаем URL из строки
-        URL url = JsonUtils.createUrl(WEATHER_URL);
-        StringBuilder resultJson= new StringBuilder();
-        for (int i=0;i<10;i++){
-        // загружаем Json в виде Java строки
-        resultJson.append(JsonUtils.parseUrl(url));
-        //System.out.println("Полученный JSON:\n" + resultJson);
-
-        };
-
-        System.out.println("Полученный JSON:\n" + resultJson);
-
-        // парсим полученный JSON и печатаем его на экран
-        //JsonUtils.parseCurrentWeatherJson(resultJson);
-
-        // формируем новый JSON объект из нужных нам погодных данных
-        //String json = JsonUtils.buildWeatherJson();
-        //System.out.println("Созданный нами JSON:\n" + json);
+        loadQuotesFile();
+        loadQuotesArray();
+        System.out.println(quote.get(0));
+        Collections.shuffle(quote);
+        System.out.println(quote.get(0));
     }
+
+    private static void loadQuotesFile() {
+        Forismatic.Quote quote;
+        try (Writer file = new FileWriter(QUOTE_FILE)) {
+            for (int i = 0; i < 100; i++) {
+                quote = new Forismatic(Forismatic.RUSSIAN).getQuote();
+                try {
+                    file.write(quote.getQuoteText() + "\u00A9 " + quote.getQuoteAuthor() + "\r\n");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void loadQuotesArray() {
+        File file = new File(QUOTE_FILE);
+        try (FileReader reader = new FileReader(file);
+             BufferedReader breader = new BufferedReader(reader)) {
+            String line;
+            while ((line = breader.readLine()) != null) {
+                quote.add(line);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

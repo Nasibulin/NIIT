@@ -23,15 +23,15 @@ class ServerOne extends Thread {
     }
 
     public void run() {
+        String str="";
         try {
-            while (true) {
-                String str = in.readLine();
+            while ((str = in.readLine()) != null) {
                 if (str.equals("close"))
                     break;
                 if (str.equals("exit"))
                     break;
                 System.out.println("Получено: " + str);
-                out.println(LocalDateTime.now() + str);
+                out.println(LocalDateTime.now());
             }
             System.out.println("Соединение закрыто");
         } catch (IOException e) {
