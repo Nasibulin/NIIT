@@ -8,10 +8,11 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="com.googlecode.json-simple:json-simple:1.1.1" level="project" />
-    <orderEntry type="library" name="forismatic-api-java" level="project" />
     <orderEntry type="library" name="org.apache.directory.studio:org.apache.httpcomponents.httpclient:4.0" level="project" />
     <orderEntry type="library" name="com.google.code.gson:gson:2.8.5" level="project" />
     <orderEntry type="library" name="org.apache.httpcomponents:httpclient-android:4.3.5" level="project" />
+    <orderEntry type="library" name="forismatic-api-java" level="project" />
+    <orderEntry type="library" name="forismatic-api-java (2)" level="project" />
   </component>
 </module>
 
