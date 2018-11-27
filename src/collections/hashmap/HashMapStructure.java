@@ -1,4 +1,5 @@
-package hashexmpl;
+package collections.hashmap;
+
 
 import java.util.HashMap;
 import java.util.Iterator;

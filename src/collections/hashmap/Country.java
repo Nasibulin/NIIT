@@ -1,4 +1,4 @@
-package hashexmpl;
+package collections.hashmap;
 
 public class Country {
 
@@ -24,7 +24,7 @@ public class Country {
     }
 
     // If length of name in country object is even then return 31(any random number) and if odd then return 95(any random number).
-    // This is not a good practice to generate hashcode as below method but I am doing so to give better and easy understanding of hashmap.
+    // This is not a good practice to generate hashcode as below method but I am doing so to give better and easy understanding of collections.
     @Override
     public int hashCode() {
         if(this.name.length()%2==0)
