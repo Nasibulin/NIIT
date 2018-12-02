@@ -15,7 +15,7 @@ public class Java8SupplierExample {
 
     public static List createStudentList()
     {
-        List<Student> studentList=new ArrayList();
+        List studentList=new ArrayList();
         Student s1=new Student(1, "Arpit", "M", 19);
         Student s2=new Student(2, "John", "M", 17);
         Student s3=new Student(3, "Mary", "F", 14);
