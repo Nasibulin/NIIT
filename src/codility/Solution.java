@@ -5,8 +5,6 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 class Solution {
     public static int solution(int N) {
@@ -51,6 +49,8 @@ class Solution {
                 .collect(Collectors.groupingBy(i -> i, Collectors.counting()));
 
         System.out.println(result1);
+        System.out.println(result1.entrySet().stream().filter(map -> map.getValue()==1L)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
         return 1;
     }
 
@@ -59,34 +59,6 @@ class Solution {
         //System.out.println(solution(328));
         //System.out.println(Arrays.toString(cyclicRotation(new int[]{3, 8, 9, 7, 6}, 5)));
         System.out.println(oddOccurrencesInArray(new int[]{1,2,3,1,2,3,7}));
-
-        {
-            // Creating an integer array
-            int arr[] = { 1, 2, 3, 4, 5 };
-
-            // --------- Using Arrays.stream() ---------
-
-            // to convert int array into Stream
-            IntStream intStream = Arrays.stream(arr);
-
-            // Displaying elements in Stream
-            intStream.forEach(str -> System.out.print(str + " "));
-
-            // --------- Using Stream.of() ---------
-
-            // to convert int array into Stream
-            Stream<int[]> stream = Stream.of(arr);
-
-            // ***** Flattening of Stream<int[]> into IntStream *****
-
-            // flattenning Stream<int[]> into IntStream
-            // using flatMapToInt()
-            IntStream intStreamNew = stream.flatMapToInt(Arrays::stream);
-
-            // Displaying elements in IntStream
-            intStreamNew.forEach(str -> System.out.print(str + " "));
-
-    }
 
     }
 }
