@@ -1,6 +1,8 @@
 package codility;
 
+
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.regex.Matcher;
@@ -41,6 +43,15 @@ class Solution {
     }
 
     public static int oddOccurrencesInArray(int[] A) {
+        HashSet<Integer> hashSet=new HashSet<>();
+        int result=0;
+        for (int i:A){
+          if(hashSet.add(i))result=i;
+        }
+        //System.out.println(hashSet);
+        return result;
+    }
+    public static int oddOccurrencesInArray_(int[] A) {
 
 
 //        Map<Integer, Long> result = Stream.of(1,2,3,1,2,3,7)
