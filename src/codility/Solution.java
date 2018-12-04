@@ -2,6 +2,7 @@ package codility;
 
 import java.util.Arrays;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -28,7 +29,7 @@ class Solution {
     }
 
     public static int[] cyclicRotation(int[] A, int K) {
-        if (A.length==0) return new int[]{};
+        if (A.length == 0) return new int[]{};
         int modul = K % A.length;
         int[] B = new int[A.length];
         //System.out.println(modul);
@@ -39,26 +40,28 @@ class Solution {
         return B;
     }
 
-    public static int oddOccurrencesInArray(int[] A){
+    public static int oddOccurrencesInArray(int[] A) {
 
 
 //        Map<Integer, Long> result = Stream.of(1,2,3,1,2,3,7)
 //                .collect(Collectors.groupingBy(r -> r, Collectors.counting()));
 
-        Map<Integer, Long> result1 = Arrays.stream(A).mapToObj(i->i)
+        Map<Integer, Long> result = Arrays.stream(A).mapToObj(i -> i)
                 .collect(Collectors.groupingBy(i -> i, Collectors.counting()));
 
-        System.out.println(result1);
-        System.out.println(result1.entrySet().stream().filter(map -> map.getValue()==1L)
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
-        return 1;
+        System.out.println(result);
+//        result.entrySet().stream().filter(map -> map.getValue() == 1L)
+//                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        TreeMap<Integer, Long> result1 = new TreeMap(result.entrySet().stream().filter(map -> map.getValue() == 1L)
+                                                             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
+        return result1.firstKey();
     }
 
 
     public static void main(String[] args) {
         //System.out.println(solution(328));
         //System.out.println(Arrays.toString(cyclicRotation(new int[]{3, 8, 9, 7, 6}, 5)));
-        System.out.println(oddOccurrencesInArray(new int[]{1,2,3,1,2,3,7}));
+        System.out.println(oddOccurrencesInArray(new int[]{9, 3, 9, 3, 9, 7, 9}));
 
     }
 }
