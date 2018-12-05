@@ -43,12 +43,15 @@ class Solution {
 
     public static int oddOccurrencesInArray(int[] A) {
         Map<Integer, Long> map = new HashMap<Integer, Long>();
-        Map<Integer, Long> evenMap = new HashMap<Integer, Long>();
+        Map<Integer, Long> oddMap = new HashMap<Integer, Long>();
         map = Arrays.stream(A).boxed()
                 .collect(Collectors.groupingBy(i -> i, Collectors.counting()));
-        evenMap = map.entrySet().stream().filter(a->(a.getValue()&1)==1).collect(Collectors.toMap(e->e.getKey(),e->e.getValue()));
+        oddMap = map.entrySet().stream().filter(a->(a.getValue()&1)==1).collect(Collectors.toMap(e->e.getKey(),e->e.getValue()));
 
-        return evenMap.keySet().iterator().next();
+
+        System.out.println(map);
+        System.out.println(oddMap);
+        return oddMap.keySet().iterator().next();
     }
 
 
