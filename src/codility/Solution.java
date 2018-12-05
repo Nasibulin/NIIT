@@ -2,9 +2,9 @@ package codility;
 
 
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -43,36 +43,34 @@ class Solution {
     }
 
     public static int oddOccurrencesInArray(int[] A) {
-        HashSet<Integer> hashSet=new HashSet<>();
+//        ArrayList<Integer> list = new ArrayList<>(A.length);
+//        for (int i = 0; i < A.length; i++) {
+//            list.add(A[i]);
+//        }
+//        Set<Integer> duplicates = new HashSet<>(list);
+//        unique.stream()
+//                .filter(t -> Collections.frequency(list, t) == 1)
+//        .forEach(key -> System.out.println(key + ": " + Collections.frequency(list, key)));
+        List<Integer> duplicates = Arrays.stream(A).boxed().collect(Collectors.toList());
+
+        Set<Integer> unique = duplicates.stream().filter(i -> Collections.frequency(duplicates, i) ==1)
+                .collect(Collectors.toSet());
+
         int result=0;
-        for (int i:A){
-          if(hashSet.add(i))result=i;
+        for (int i:unique){
+            result=i;
         }
-        //System.out.println(hashSet);
+
+        System.out.println(duplicates);
+        System.out.println(unique);
         return result;
-    }
-    public static int oddOccurrencesInArray_(int[] A) {
-
-
-//        Map<Integer, Long> result = Stream.of(1,2,3,1,2,3,7)
-//                .collect(Collectors.groupingBy(r -> r, Collectors.counting()));
-
-        Map<Integer, Long> result = Arrays.stream(A).mapToObj(i -> i)
-                .collect(Collectors.groupingBy(i -> i, Collectors.counting()));
-
-        System.out.println(result);
-//        result.entrySet().stream().filter(map -> map.getValue() == 1L)
-//                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-        TreeMap<Integer, Long> result1 = new TreeMap(result.entrySet().stream().filter(map -> map.getValue() == 1L)
-                                                             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
-        return result1.firstKey();
     }
 
 
     public static void main(String[] args) {
         //System.out.println(solution(328));
         //System.out.println(Arrays.toString(cyclicRotation(new int[]{3, 8, 9, 7, 6}, 5)));
-        System.out.println(oddOccurrencesInArray(new int[]{9, 3, 9, 3, 9, 7, 9}));
+        System.out.println(oddOccurrencesInArray(new int[]{9, 10, 3, 9, 3, 9, 7, 7, 9}));
 
     }
 }
