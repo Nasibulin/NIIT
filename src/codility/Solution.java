@@ -1,6 +1,8 @@
 package codility;
 
 
+import collections.hashmap.HashMapStructure;
+
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -40,31 +42,13 @@ class Solution {
     }
 
     public static int oddOccurrencesInArray(int[] A) {
-//        ArrayList<Integer> list = new ArrayList<>(A.length);
-//        for (int i = 0; i < A.length; i++) {
-//            list.add(A[i]);
-//        }
-//        Set<Integer> duplicates = new HashSet<>(list);
-//        unique.stream()
-//                .filter(t -> Collections.frequency(list, t) == 1)
-//        .forEach(key -> System.out.println(key + ": " + Collections.frequency(list, key)));
-        List<Integer> duplicates = Arrays.stream(A).boxed().collect(Collectors.toList());
-
-        Set<Integer> unique = duplicates.stream().filter(i -> Collections.frequency(duplicates, i) % 2 == 1)
-                .collect(Collectors.toSet());
         Map<Integer, Long> map = new HashMap<Integer, Long>();
-        Map<Long, Integer> map2 = new HashMap<Long, Integer>();
+        Map<Integer, Long> evenMap = new HashMap<Integer, Long>();
         map = Arrays.stream(A).boxed()
                 .collect(Collectors.groupingBy(i -> i, Collectors.counting()));
+        evenMap = map.entrySet().stream().filter(a->(a.getValue()&1)==1).collect(Collectors.toMap(e->e.getKey(),e->e.getValue()));
 
-        for (Map.Entry<Integer, Long> entry : map.entrySet()) {
-            map2.put(entry.getValue(), entry.getKey());
-        }
-
-        System.out.println(map2);
-        System.out.println(duplicates);
-        System.out.println(unique);
-        return map2.entrySet().iterator().next().getValue();
+        return evenMap.keySet().iterator().next();
     }
 
 
