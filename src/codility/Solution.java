@@ -53,17 +53,17 @@ class Solution {
 //        .forEach(key -> System.out.println(key + ": " + Collections.frequency(list, key)));
         List<Integer> duplicates = Arrays.stream(A).boxed().collect(Collectors.toList());
 
-        Set<Integer> unique = duplicates.stream().filter(i -> Collections.frequency(duplicates, i) ==1)
+        Set<Integer> unique = duplicates.stream().filter(i -> Collections.frequency(duplicates, i)%2 ==1)
                 .collect(Collectors.toSet());
 
-        int result=0;
-        for (int i:unique){
-            result=i;
-        }
+//        int result=0;
+//        for (int i:unique){
+//            result=i;
+//        }
 
         System.out.println(duplicates);
         System.out.println(unique);
-        return result;
+        return unique.isEmpty()?0:unique.iterator().next();
     }
 
 
