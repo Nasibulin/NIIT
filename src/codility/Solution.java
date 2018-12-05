@@ -1,10 +1,7 @@
 package codility;
 
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -53,17 +50,21 @@ class Solution {
 //        .forEach(key -> System.out.println(key + ": " + Collections.frequency(list, key)));
         List<Integer> duplicates = Arrays.stream(A).boxed().collect(Collectors.toList());
 
-        Set<Integer> unique = duplicates.stream().filter(i -> Collections.frequency(duplicates, i)%2 ==1)
+        Set<Integer> unique = duplicates.stream().filter(i -> Collections.frequency(duplicates, i) % 2 == 1)
                 .collect(Collectors.toSet());
+        Map<Integer, Long> map = new HashMap<Integer, Long>();
+        Map<Long, Integer> map2 = new HashMap<Long, Integer>();
+        map = Arrays.stream(A).boxed()
+                .collect(Collectors.groupingBy(i -> i, Collectors.counting()));
 
-//        int result=0;
-//        for (int i:unique){
-//            result=i;
-//        }
+        for (Map.Entry<Integer, Long> entry : map.entrySet()) {
+            map2.put(entry.getValue(), entry.getKey());
+        }
 
+        System.out.println(map2);
         System.out.println(duplicates);
         System.out.println(unique);
-        return unique.isEmpty()?0:unique.iterator().next();
+        return map2.entrySet().iterator().next().getValue();
     }
 
 
