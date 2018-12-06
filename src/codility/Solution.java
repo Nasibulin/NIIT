@@ -1,12 +1,13 @@
 package codility;
 
 
-import collections.hashmap.HashMapStructure;
-
-import java.util.*;
+import java.time.LocalTime;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 class Solution {
     public static int solution(int N) {
@@ -42,23 +43,29 @@ class Solution {
     }
 
     public static int oddOccurrencesInArray(int[] A) {
-        Map<Integer, Long> map = new HashMap<Integer, Long>();
-        Map<Integer, Long> oddMap = new HashMap<Integer, Long>();
-        map = Arrays.stream(A).boxed()
-                .collect(Collectors.groupingBy(i -> i, Collectors.counting()));
-        oddMap = map.entrySet().stream().filter(a->(a.getValue()&1)==1).collect(Collectors.toMap(e->e.getKey(),e->e.getValue()));
+        Map<Integer, Long> map = new HashMap<>();
+        //Map<Integer, Long> oddMap = new HashMap<>();
+        map = IntStream.of(A).boxed().collect(Collectors.groupingBy(i -> i,Collectors.counting()));
 
+//        map = Arrays.stream(A).boxed()
+//                .collect(Collectors.groupingBy(i -> i, Collectors.counting()));
+        //oddMap = map.entrySet().parallelStream().filter(a->(a.getValue()&1)==1).collect(Collectors.toMap(e->e.getKey(),e->e.getValue()));
+        //oddMap = map.entrySet().stream().filter(a->(a.getValue()&1)==1).collect(Collectors.toMap(e->e.getKey(),e->e.getValue()));
+        //map.values().removeIf(v -> (v&1) == 0);
+        int result= map.entrySet().stream().filter(a -> (a.getValue() & 1) == 1).iterator().next().getKey();
 
-        System.out.println(map);
-        System.out.println(oddMap);
-        return oddMap.keySet().iterator().next();
+        //System.out.println(map);
+        //System.out.println(oddMap);
+        return result;
     }
 
 
     public static void main(String[] args) {
         //System.out.println(solution(328));
         //System.out.println(Arrays.toString(cyclicRotation(new int[]{3, 8, 9, 7, 6}, 5)));
+        System.out.println(LocalTime.now());
         System.out.println(oddOccurrencesInArray(new int[]{9, 10, 3, 9, 3, 9, 7, 7, 9}));
+        System.out.println(LocalTime.now());
 
     }
 }
