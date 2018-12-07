@@ -1,10 +1,7 @@
 package codility;
 
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -81,7 +78,11 @@ class Solution {
 
     public static int tapeEquilibrium (int [] A){
        int sum = (int)Arrays.stream(A).sum();
-       return sum;
+        List<Integer> list = Arrays.stream(A).boxed().collect(Collectors.toList());
+        System.out.println(list);
+        Collections.reverse(list);
+        System.out.println(list);
+        return sum;
     }
 
     public static int[] tapeArray (int N){
