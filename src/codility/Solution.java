@@ -65,32 +65,40 @@ class Solution {
     }
 
     public static int permMissingElem(int A[]) {
-        Arrays.sort( A );
-        for(int i=0;i<A.length;i++){
-            if (A[i]!=i+1) return i+1;
+        Arrays.sort(A);
+        for (int i = 0; i < A.length; i++) {
+            if (A[i] != i + 1) return i + 1;
         }
-        return A.length+1;
+        return A.length + 1;
     }
 
-    public static int frogJmp(int X, int Y, int D)   {
-        return (Y-X)%D==0?(Y-X)/D:(Y-X)/D+1;
+    public static int frogJmp(int X, int Y, int D) {
+        return (Y - X) % D == 0 ? (Y - X) / D : (Y - X) / D + 1;
     }
 
-    public static int tapeEquilibrium (int [] A){
-       int sum = (int)Arrays.stream(A).sum();
-        List<Integer> list = Arrays.stream(A).boxed().collect(Collectors.toList());
-        System.out.println(list);
-        Collections.reverse(list);
-        System.out.println(list);
-        return sum;
-    }
+    public static int tapeEquilibrium(int[] A) {
+        int left=0;
+        int right=0;
+        int diff=0;
+        System.out.println(Arrays.toString(A));
+        for (int i=0;i<A.length;i++){
 
-    public static int[] tapeArray (int N){
-       int[] array=new int[N];
-        for (int i=0;i<array.length;i++){
-            array[i]= new Random().nextInt(N);
+            left+=A[i];
+            right+=A[A.length-1-i];
+            System.out.println(left);
+            System.out.println(right);
+            diff=Math.abs(left-right)>diff?Math.abs(left-right):diff;
+
         }
-       return array;
+    return diff;
+    }
+
+    public static int[] tapeArray(int N) {
+        int[] array = new int[N];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = new Random().nextInt(N);
+        }
+        return array;
     }
 
     public static void main(String[] args) {
