@@ -77,26 +77,25 @@ class Solution {
     }
 
     public static int tapeEquilibrium(int[] A) {
-        int left=0;
-        int right=0;
-        int diff=0;
+        int left = 0;
+        int sum = Arrays.stream(A).sum();
+        int right = sum;
+        int diff = sum;
         System.out.println(Arrays.toString(A));
-        for (int i=0;i<A.length;i++){
-
-            left+=A[i];
-            right+=A[A.length-1-i];
-            System.out.println(left);
-            System.out.println(right);
-            diff=Math.abs(left-right)>diff?Math.abs(left-right):diff;
-
+        System.out.println(sum);
+        for (int i = 0; i < A.length; i++) {
+            left += A[i];
+            right -= A[i];
+            diff = Math.abs(left - right) < diff ? Math.abs(left - right) : diff;
+            System.out.println(Math.abs(left - right));
         }
-    return diff;
+        return diff;
     }
 
     public static int[] tapeArray(int N) {
         int[] array = new int[N];
         for (int i = 0; i < array.length; i++) {
-            array[i] = new Random().nextInt(N);
+            array[i] = new Random().nextInt(100);
         }
         return array;
     }
@@ -106,7 +105,7 @@ class Solution {
         //System.out.println(Arrays.toString(cyclicRotation(new int[]{3, 8, 9, 7, 6}, 5)));
         //System.out.println(permMissingElem(new int[]{1}));
         //System.out.println(frogJmp(10,85,30));
-        System.out.println(tapeEquilibrium(tapeArray(50)));
+        System.out.println(tapeEquilibrium(tapeArray(10)));
 
 
     }
