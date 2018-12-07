@@ -1,9 +1,10 @@
 package codility;
 
 
-import java.time.LocalTime;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -42,30 +43,62 @@ class Solution {
         return B;
     }
 
-    public static int oddOccurrencesInArray(int[] A) {
+    public static int oddOccurrencesInArray_(int[] A) {
         Map<Integer, Long> map = new HashMap<>();
         //Map<Integer, Long> oddMap = new HashMap<>();
-        map = IntStream.of(A).boxed().collect(Collectors.groupingBy(i -> i,Collectors.counting()));
+        map = IntStream.of(A).boxed().collect(Collectors.groupingBy(i -> i, Collectors.counting()));
 
 //        map = Arrays.stream(A).boxed()
 //                .collect(Collectors.groupingBy(i -> i, Collectors.counting()));
         //oddMap = map.entrySet().parallelStream().filter(a->(a.getValue()&1)==1).collect(Collectors.toMap(e->e.getKey(),e->e.getValue()));
         //oddMap = map.entrySet().stream().filter(a->(a.getValue()&1)==1).collect(Collectors.toMap(e->e.getKey(),e->e.getValue()));
         //map.values().removeIf(v -> (v&1) == 0);
-        int result= map.entrySet().stream().filter(a -> (a.getValue() & 1) == 1).iterator().next().getKey();
+        int result = map.entrySet().stream().filter(a -> (a.getValue() & 1) == 1).iterator().next().getKey();
 
         //System.out.println(map);
         //System.out.println(oddMap);
         return result;
     }
 
+    public static int oddOccurrencesInArray(int[] A) {
+        Arrays.sort(A);
+        int i;
+        for (i = 0; i < A.length - 1 && A[i] == A[i + 1]; i += 2) ;
+        return A[i];
+    }
+
+    public static int permMissingElem(int A[]) {
+        Arrays.sort( A );
+        for(int i=0;i<A.length;i++){
+            if (A[i]!=i+1) return i+1;
+        }
+        return A.length+1;
+    }
+
+    public static int frogJmp(int X, int Y, int D)   {
+        return (Y-X)%D==0?(Y-X)/D:(Y-X)/D+1;
+    }
+
+    public static int tapeEquilibrium (int [] A){
+       int sum = (int)Arrays.stream(A).sum();
+       return sum;
+    }
+
+    public static int[] tapeArray (int N){
+       int[] array=new int[N];
+        for (int i=0;i<array.length;i++){
+            array[i]= new Random().nextInt(N);
+        }
+       return array;
+    }
 
     public static void main(String[] args) {
         //System.out.println(solution(328));
         //System.out.println(Arrays.toString(cyclicRotation(new int[]{3, 8, 9, 7, 6}, 5)));
-        System.out.println(LocalTime.now());
-        System.out.println(oddOccurrencesInArray(new int[]{9, 10, 3, 9, 3, 9, 7, 7, 9}));
-        System.out.println(LocalTime.now());
+        //System.out.println(permMissingElem(new int[]{1}));
+        //System.out.println(frogJmp(10,85,30));
+        System.out.println(tapeEquilibrium(tapeArray(50)));
+
 
     }
 }
