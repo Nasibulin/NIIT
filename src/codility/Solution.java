@@ -89,11 +89,11 @@ class Solution {
             tmp = Math.abs(right - left);
             left += A[p];
             right -= A[p];
-            diff = tmp < diff ? tmp : diff;
+            diff = tmp <= diff ? tmp : diff;
             System.out.println(diff + " " + tmp);
             if (tmp != diff) return diff;
         }
-        return diff;
+        return -1;
     }
 
     public static int[] tapeArray(int N) {
@@ -109,7 +109,7 @@ class Solution {
         //System.out.println(Arrays.toString(cyclicRotation(new int[]{3, 8, 9, 7, 6}, 5)));
         //System.out.println(permMissingElem(new int[]{1}));
         //System.out.println(frogJmp(10,85,30));
-        System.out.println(tapeEquilibrium(tapeArray(100)));
+        System.out.println(tapeEquilibrium(tapeArray(50)));
 
 
     }
