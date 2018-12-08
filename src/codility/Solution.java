@@ -84,7 +84,7 @@ class Solution {
         int tmp = 0;
         System.out.println(Arrays.toString(A));
 
-        for (int p = 1; (p < A.length - 1); p++) {
+        for (int p = 1; (p < A.length - 1)&(diff!=0); p++) {
 
             left += A[p];
             right -= A[p];
