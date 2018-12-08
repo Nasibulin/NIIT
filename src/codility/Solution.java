@@ -77,24 +77,48 @@ class Solution {
     }
 
     public static int tapeEquilibrium(int[] A) {
-        int left = A[0];
-        final int sum = IntStream.of(A).sum() - left;
-        int right = sum;
-        int diff = Math.abs(right - left);
-        int tmp = 0;
-        System.out.println(Arrays.toString(A));
+        long left = A[0];
+        long sum = 0;
+        for (int i = 1; i < A.length; i++) {
+            sum += A[i];
+        }
+        long right = sum;
+        long diff = Math.abs(left - right);
 
-        for (int p = 1; (p < A.length - 1)&(diff!=0); p++) {
-
+        for (int p = 1; p < A.length - 1; p++) {
             left += A[p];
             right -= A[p];
-            tmp = Math.abs(right - left);
-            //System.out.println(diff + " " + tmp);
-            diff = tmp < diff ? tmp : diff;
-
+            diff = Math.min(diff, Math.abs(left - right));
         }
-        return diff;
+        return (int) diff;
     }
+
+    public static int permCheck(int[] A) {
+        Arrays.sort(A);
+
+        if (A[0] != 1) return 0;
+        if (A.length == 1) return A[0] == 1 ? 1 : 0;
+        for (int i = 1; i < A.length; i++) {
+            if (A[i] != A[i - 1] + 1) return 0;
+        }
+        return 1;
+    }
+
+    public static int frogRiverOne(int X, int[] A) {
+        Set<Integer> way = new HashSet<>();
+        for (int i = 1; i < X + 1; i++) {
+            way.add(i);
+        }
+        System.out.println(way);
+        for (int i = 0; i < A.length; i++) {
+            if (way.contains(A[i])) {
+                way.remove(A[i]);
+                if (way.isEmpty()) return i;
+            }
+        }
+        return -1;
+    }
+
 
     public static int[] tapeArray(int N) {
         int[] array = new int[N];
@@ -109,7 +133,9 @@ class Solution {
         //System.out.println(Arrays.toString(cyclicRotation(new int[]{3, 8, 9, 7, 6}, 5)));
         //System.out.println(permMissingElem(new int[]{1}));
         //System.out.println(frogJmp(10,85,30));
-        System.out.println(tapeEquilibrium(tapeArray(50)));
+        //System.out.println(tapeEquilibrium(new int[]{-1000,1000}));
+        //System.out.println(permCheck(new int[]{7}));
+        System.out.println(frogRiverOne(5, new int[]{1, 3, 1, 4, 2, 3, 5, 4}));
 
 
     }
