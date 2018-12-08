@@ -78,7 +78,7 @@ class Solution {
 
     public static int tapeEquilibrium(int[] A) {
         int left = A[0];
-        final int sum = Arrays.stream(A).sum() - left;
+        final int sum = IntStream.of(A).sum() - left;
         int right = sum;
         int diff = Math.abs(right - left);
         int tmp = 0;
@@ -86,14 +86,14 @@ class Solution {
 
         for (int p = 1; (p < A.length - 1); p++) {
 
-            tmp = Math.abs(right - left);
             left += A[p];
             right -= A[p];
-            diff = tmp <= diff ? tmp : diff;
-            System.out.println(diff + " " + tmp);
-            if (tmp != diff) return diff;
+            tmp = Math.abs(right - left);
+            //System.out.println(diff + " " + tmp);
+            diff = tmp < diff ? tmp : diff;
+
         }
-        return -1;
+        return diff;
     }
 
     public static int[] tapeArray(int N) {
