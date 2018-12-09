@@ -119,6 +119,21 @@ class Solution {
         return -1;
     }
 
+    public static int[] maxCounters(int N, int[] A) {
+        int[] X = new int[N];
+        int max = 0;
+
+        for (int i : A) {
+            if (i <= N) {
+                X[i - 1]++;
+                max = (X[i - 1]> max)?X[i - 1]:max;
+            } else if (i == N + 1) {
+                for (int j=0;j<X.length;j++) {X[j]=max;}
+            }
+        }
+        return X;
+    }
+
 
     public static int[] tapeArray(int N) {
         int[] array = new int[N];
@@ -135,8 +150,9 @@ class Solution {
         //System.out.println(frogJmp(10,85,30));
         //System.out.println(tapeEquilibrium(new int[]{-1000,1000}));
         //System.out.println(permCheck(new int[]{7}));
-        System.out.println(frogRiverOne(5, new int[]{1, 3, 1, 4, 2, 3, 5, 4}));
-
+        //System.out.println(frogRiverOne(5, new int[]{1, 3, 1, 4, 2, 3, 5, 4}));
+        System.out.println(Arrays.toString(maxCounters(5, new int[]{1,6,1,2,3,5})));
 
     }
+
 }
