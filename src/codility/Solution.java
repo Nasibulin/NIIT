@@ -121,17 +121,42 @@ class Solution {
 
     public static int[] maxCounters(int N, int[] A) {
         int[] X = new int[N];
-        int max = 0;
-
-        for (int i : A) {
-            if (i <= N) {
-                X[i - 1]++;
-                max = (X[i - 1]> max)?X[i - 1]:max;
-            } else if (i == N + 1) {
-                for (int j=0;j<X.length;j++) {X[j]=max;}
+        int currentMax = 0;
+        int currentMaxApplied = 0;
+        for (int i = 0; i < A.length; i++) {
+            if (A[i] <= N) {
+                if (X[A[i] - 1] < currentMaxApplied) {
+                    X[A[i] - 1] = currentMaxApplied + 1;
+                } else {
+                    X[A[i] - 1]++;
+                }
+                currentMax = Math.max(X[A[i] - 1], currentMax);
+            } else {
+                currentMaxApplied = currentMax;
+            }
+        }
+        for (int i = 0; i < X.length; i++) {
+            if (X[i] < currentMaxApplied) {
+                X[i] = currentMaxApplied;
             }
         }
         return X;
+
+    }
+
+    public static int missingInteger(int[] A) {
+        Arrays.sort(A);
+        int max = 0;
+        System.out.println(Arrays.toString(A));
+
+        for (int i = 0; i < A.length; i++) {
+            //System.out.println(max);
+            if (A[i] > max+1) {
+                return A[i-1] + 1;
+            }
+            max = (A[i] > max) ? A[i] : max;
+        }
+        return max > 0 ? max + 1 : 1;
     }
 
 
@@ -151,7 +176,8 @@ class Solution {
         //System.out.println(tapeEquilibrium(new int[]{-1000,1000}));
         //System.out.println(permCheck(new int[]{7}));
         //System.out.println(frogRiverOne(5, new int[]{1, 3, 1, 4, 2, 3, 5, 4}));
-        System.out.println(Arrays.toString(maxCounters(5, new int[]{1,6,1,2,3,5})));
+        //System.out.println(Arrays.toString(maxCounters(5, new int[]{1, 1, 6, 2, 3, 5})));
+        System.out.println(missingInteger(new int[]{1,2,3,4,6}));
 
     }
 
