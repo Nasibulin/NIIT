@@ -148,22 +148,22 @@ class Solution {
         Arrays.sort(A);
         int max = 0;
         System.out.println(Arrays.toString(A));
+        if (A.length==1) return A[0]==1?2:1;
+        for (int i=0;i<A.length;i++){
 
-        for (int i = 0; i < A.length; i++) {
-            //System.out.println(max);
-            if (A[i] > max+1) {
-                return A[i-1] + 1;
-            }
-            max = (A[i] > max) ? A[i] : max;
+            if (A[i]<0) continue;
+            if (A[i]>max+1) return max+1;
+            max=Math.max(max,A[i]);
         }
-        return max > 0 ? max + 1 : 1;
+
+        return max+1;
     }
 
 
     public static int[] tapeArray(int N) {
         int[] array = new int[N];
         for (int i = 0; i < array.length; i++) {
-            array[i] = (new Random().nextInt(50));
+            array[i] = (new Random().nextInt(100));
         }
         return array;
     }
@@ -177,7 +177,9 @@ class Solution {
         //System.out.println(permCheck(new int[]{7}));
         //System.out.println(frogRiverOne(5, new int[]{1, 3, 1, 4, 2, 3, 5, 4}));
         //System.out.println(Arrays.toString(maxCounters(5, new int[]{1, 1, 6, 2, 3, 5})));
-        System.out.println(missingInteger(new int[]{1,2,3,4,6}));
+        //System.out.println(missingInteger(new int[]{4, 5, 6, 10, 11, 13, 15, 15, 17, 18, 20, 22, 24, 24, 31, 32, 32, 34, 35, 37, 43, 48, 48, 49, 50, 50, 53, 53, 58, 63, 64, 65, 65, 66, 67, 67, 68, 68, 70, 72, 73, 78, 80, 80, 82, 83, 91, 96, 97, 98}));
+        //System.out.println(missingInteger(new int[]{-1000000,1,2,4,6}));
+        System.out.println(missingInteger(new int[]{1,2,3}));
 
     }
 
