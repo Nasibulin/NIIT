@@ -178,6 +178,12 @@ class Solution {
         return pairs>1000000000L?-1: (int) pairs;
     }
 
+    public int[] genomicRangeQuery (String S, int[] P, int[] Q) {
+
+
+
+        return new int[0];
+    }
 
     public static int[] tapeArray(int N) {
         int[] array = new int[N];
