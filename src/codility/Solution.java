@@ -188,9 +188,9 @@ class Solution {
 
         for (int i=0;i<P.length;i++){
 
-            int [] subgen = Arrays.copyOfRange(S.chars().toArray(),P[i],Q[i]+1);
-            Arrays.sort(subgen);
-            result[i]=genmap.get((char)subgen[0]);
+            int subgen = S.substring(P[i],Q[i]+1).chars().min().getAsInt();
+            result[i]=genmap.get((char)subgen);
+
         }
 
         return result;
