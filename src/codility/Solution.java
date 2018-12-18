@@ -188,10 +188,15 @@ class Solution {
 
         for (int i=0;i<P.length;i++){
 
-            int subgen = S.substring(P[i],Q[i]+1).chars().min().getAsInt();
-            result[i]=genmap.get((char)subgen);
-
+            String subgen = S.substring(P[i],Q[i]+1);
+            if (subgen.indexOf('A')>=0) {result[i]=1; continue;}
+            if (subgen.indexOf('C')>=0) {result[i]=2; continue;}
+            if (subgen.indexOf('G')>=0) {result[i]=3; continue;}
+            if (subgen.indexOf('T')>=0) {result[i]=4;}
         }
+
+
+
 
         return result;
     }
