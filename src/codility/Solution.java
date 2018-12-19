@@ -186,6 +186,7 @@ class Solution {
         return array;
     }
 
+
     public static void main(String[] args) {
         //System.out.println(solution(328));
         //System.out.println(Arrays.toString(cyclicRotation(new int[]{3, 8, 9, 7, 6}, 5)));
@@ -198,7 +199,7 @@ class Solution {
         //System.out.println(missingInteger(new int[]{4, 5, 6, 10, 11, 13, 15, 15, 17, 18, 20, 22, 24, 24, 31, 32, 32, 34, 35, 37, 43, 48, 48, 49, 50, 50, 53, 53, 58, 63, 64, 65, 65, 66, 67, 67, 68, 68, 70, 72, 73, 78, 80, 80, 82, 83, 91, 96, 97, 98}));
         //System.out.println(missingInteger(new int[]{-1000000,1,2,4,6}));
         //System.out.println(passingCars(new int[]{0,1,0,1,1,0,0,0,1}));
-        System.out.println(Arrays.toString(RangeMinimumQuery.genomicRangeQuery("CAGCCTA", new int[]{2, 5, 0}, new int[]{4, 5, 6})));
+        //System.out.println(Arrays.toString(RangeMinimumQuery.genomicRangeQuery("CAGCCTA", new int[]{2, 5, 0}, new int[]{4, 5, 6})));
 
     }
 
