@@ -1,6 +1,5 @@
 package codility;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -115,10 +114,4 @@ public class RangeMinimumQuery {
         return result;
     }
 
-    // Driver program to test above functions
-    public static void main(String args[]) {
-
-        System.out.println(Arrays.toString(genomicRangeQuery("CAGCCTA", new int[]{2, 5, 0}, new int[]{4, 5, 6})));
-
-    }
 }
