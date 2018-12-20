@@ -10,7 +10,10 @@ public class RangeMaximumQuery {
     static int minVal(int x, int y) {
         return (x < y) ? x : y;
     }
-
+        // A utility function to get maximum of two numbers
+    static int maxVal(int x, int y) {
+        return (x > y) ? x : y;
+    }
     // A utility function to get the middle index from corner
     // indexes.
     static int getMid(int s, int e) {
@@ -35,11 +38,11 @@ public class RangeMaximumQuery {
 
         // If segment of this node is outside the given range
         if (se < qs || ss > qe)
-            return Integer.MAX_VALUE;
+            return Integer.MIN_VALUE;
 
         // If a part of this segment overlaps with the given range
         int mid = getMid(ss, se);
-        return minVal(RMQUtil(ss, mid, qs, qe, 2 * index + 1),
+        return maxVal(RMQUtil(ss, mid, qs, qe, 2 * index + 1),
                       RMQUtil(mid + 1, se, qs, qe, 2 * index + 2));
     }
 
@@ -57,7 +60,7 @@ public class RangeMaximumQuery {
 
     // A recursive function that constructs Segment Tree for
     // array[ss..se]. si is index of current node in segment tree st
-    static int constructSTUtil(char arr[], int ss, int se, int si) {
+    static int constructSTUtil(int arr[], int ss, int se, int si) {
         // If there is one element in array, store it in current
         //  node of segment tree and return
         if (ss == se) {
@@ -66,9 +69,9 @@ public class RangeMaximumQuery {
         }
 
         // If there are more than one elements, then recur for left and
-        // right subtrees and store the minimum of two values in this node
+        // right subtrees and store the maximum of two values in this node
         int mid = getMid(ss, se);
-        st[si] = minVal(constructSTUtil(arr, ss, mid, si * 2 + 1),
+        st[si] = maxVal(constructSTUtil(arr, ss, mid, si * 2 + 1),
                         constructSTUtil(arr, mid + 1, se, si * 2 + 2));
         return st[si];
     }
@@ -76,7 +79,7 @@ public class RangeMaximumQuery {
     /* Function to construct segment tree from given array. This function
        allocates memory for segment tree and calls constructSTUtil() to
        fill the allocated memory */
-    static void constructST(char arr[], int n) {
+    static void constructST(int arr[], int n) {
         // Allocate memory for segment tree
 
         //Height of segment tree
@@ -90,24 +93,18 @@ public class RangeMaximumQuery {
         constructSTUtil(arr, 0, n - 1, 0);
     }
 
-    public static int[] genomicRangeQuery(String S, int[] P, int[] Q) {
-        Map<Character, Integer> genmap = new HashMap<>();
-        genmap.put('A', 1);
-        genmap.put('C', 2);
-        genmap.put('G', 3);
-        genmap.put('T', 4);
+    public static int[] genomicRangeQuery(int [] S, int[] P, int[] Q) {
 
-        char arr[] = S.toCharArray();
-        int n = arr.length;
+        int n = S.length;
         int[] result = new int[P.length];
 
         // Build segment tree from given array
-        constructST(arr, n);
+        constructST(S, n);
 
         for (int i = 0; i < P.length; i++) {
             // P[i] Starting index of query range
             // Q[i] Ending index of query range
-            result[i] = genmap.get((char) RMQ(n, P[i], Q[i]));
+            result[i] = RMQ(n, P[i], Q[i]);
         }
 
 
