@@ -7,7 +7,7 @@
  *
  ******************************************************************************/
 
-package edu.princeton.cs.algs4;
+package codility;
 
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
