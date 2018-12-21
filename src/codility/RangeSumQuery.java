@@ -14,6 +14,10 @@ public class RangeSumQuery {
     static int maxVal(int x, int y) {
         return (x > y) ? x : y;
     }
+    // A utility function to get sum of two numbers
+    static int sumVal(int x, int y) {
+        return x+y;
+    }
 
     // A utility function to get the middle index from corner
     // indexes.
@@ -39,7 +43,7 @@ public class RangeSumQuery {
 
         // If segment of this node is outside the given range
         if (se < qs || ss > qe)
-            return 0;
+            return Integer.MAX_VALUE;
 
         // If a part of this segment overlaps with the given range
         int mid = getMid(ss, se);
@@ -47,7 +51,7 @@ public class RangeSumQuery {
         int leftSum =RMQUtil(ss, mid, qs, qe, 2 * index + 1);
         int rightSum = RMQUtil(mid + 1, se, qs, qe, 2 * index + 2);
 
-        return (leftSum+rightSum)/(se-ss);
+        return minVal(leftSum,rightSum);
     }
 
     // Return minimum of elements in range from index qs (query
@@ -73,12 +77,12 @@ public class RangeSumQuery {
         }
 
         // If there are more than one elements, then recur for left and
-        // right subtrees and store the maximum of two values in this node
+        // right subtrees and store the sum of two values in this node
         int mid = getMid(ss, se);
 
         int leftSum = constructSTUtil(arr, ss, mid, si * 2 + 1);
         int rightSum = constructSTUtil(arr, mid + 1, se, si * 2 + 2);
-        st[si] = (leftSum + rightSum)/(se-ss);
+        st[si] = minVal(leftSum,rightSum);
         return st[si];
     }
 
@@ -90,22 +94,25 @@ public class RangeSumQuery {
 
         //Height of segment tree
         int x = (int) (Math.ceil(Math.log(n) / Math.log(2)));
+        //System.out.println(x);
 
         //Maximum size of segment tree
         int max_size = 2 * (int) Math.pow(2, x) - 1;
+        //System.out.println(max_size);
         st = new int[max_size]; // allocate memory
 
         // Fill the allocated memory st
         constructSTUtil(arr, 0, n - 1, 0);
     }
 
-    public static int[] genomicRangeQuery(int[] S, int[] P, int[] Q) {
+    public static int[] sumRangeQuery(int[] S, int[] P, int[] Q) {
 
         int n = S.length;
         int[] result = new int[P.length];
 
         // Build segment tree from given array
         constructST(S, n);
+        System.out.println(Arrays.toString(S));
         System.out.println(Arrays.toString(st));
         for (int i = 0; i < P.length; i++) {
             // P[i] Starting index of query range
