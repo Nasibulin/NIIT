@@ -38,7 +38,7 @@ public class RangeSumQuery {
                      represented by current node, i.e., st[index]
         qs & qe  --> Starting and ending indexes of query range */
     static int RMQUtil(int ss, int se, int qs, int qe, int index) {
-
+        System.out.println(index+"\t"+ss+"\t"+se+"\t"+qs+"\t"+qe);
         // If segment of this node is a part of given range, then
         // return the min of the segment
         if (qs <= ss && qe >= se)
@@ -74,8 +74,8 @@ public class RangeSumQuery {
     // array[ss..se]. si is index of current node in segment tree st
     static int constructSTUtil(int arr[], int ss, int se, int si) {
         counter++;
-        System.out.println(counter);
-        System.out.println(Arrays.toString(st));
+        //System.out.println(counter);
+        //System.out.println(Arrays.toString(st));
 
         // If there is one element in array, store it in current
         //  node of segment tree and return
@@ -125,8 +125,6 @@ public class RangeSumQuery {
             // Q[i] Ending index of query range
             result[i] = RMQ(n, P[i], Q[i]);
         }
-
-
         return result;
     }
 
