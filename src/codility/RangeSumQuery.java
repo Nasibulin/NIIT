@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class RangeSumQuery {
     static int st[]; //array to store segment tree
+    static int counter = 0;
 
     // A utility function to get minimum of two numbers
     static int minVal(int x, int y) {
@@ -14,9 +15,10 @@ public class RangeSumQuery {
     static int maxVal(int x, int y) {
         return (x > y) ? x : y;
     }
+
     // A utility function to get sum of two numbers
     static int sumVal(int x, int y) {
-        return x+y;
+        return x + y;
     }
 
     // A utility function to get the middle index from corner
@@ -49,7 +51,7 @@ public class RangeSumQuery {
         // If a part of this segment overlaps with the given range
         int mid = getMid(ss, se);
 
-        int leftSum =RMQUtil(ss, mid, qs, qe, 2 * index + 1);
+        int leftSum = RMQUtil(ss, mid, qs, qe, 2 * index + 1);
 
         int rightSum = RMQUtil(mid + 1, se, qs, qe, 2 * index + 2);
 
@@ -71,6 +73,10 @@ public class RangeSumQuery {
     // A recursive function that constructs Segment Tree for
     // array[ss..se]. si is index of current node in segment tree st
     static int constructSTUtil(int arr[], int ss, int se, int si) {
+        counter++;
+        System.out.println(counter);
+        System.out.println(Arrays.toString(st));
+
         // If there is one element in array, store it in current
         //  node of segment tree and return
         if (ss == se) {
@@ -85,6 +91,7 @@ public class RangeSumQuery {
         int leftSum = constructSTUtil(arr, ss, mid, si * 2 + 1);
         int rightSum = constructSTUtil(arr, mid + 1, se, si * 2 + 2);
         st[si] = minVal(leftSum, rightSum);
+
         return st[si];
     }
 
@@ -96,11 +103,9 @@ public class RangeSumQuery {
 
         //Height of segment tree
         int x = (int) (Math.ceil(Math.log(n) / Math.log(2)));
-        //System.out.println(x);
 
         //Maximum size of segment tree
         int max_size = 2 * (int) Math.pow(2, x) - 1;
-        //System.out.println(max_size);
         st = new int[max_size]; // allocate memory
 
         // Fill the allocated memory st
