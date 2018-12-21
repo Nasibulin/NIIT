@@ -1,19 +1,20 @@
 package codility;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
 
-public class RangeMaximumQuery {
+public class RangeSumQuery {
     static int st[]; //array to store segment tree
 
     // A utility function to get minimum of two numbers
     static int minVal(int x, int y) {
         return (x < y) ? x : y;
     }
-        // A utility function to get maximum of two numbers
+
+    // A utility function to get maximum of two numbers
     static int maxVal(int x, int y) {
         return (x > y) ? x : y;
     }
+
     // A utility function to get the middle index from corner
     // indexes.
     static int getMid(int s, int e) {
@@ -38,12 +39,15 @@ public class RangeMaximumQuery {
 
         // If segment of this node is outside the given range
         if (se < qs || ss > qe)
-            return Integer.MIN_VALUE;
+            return 0;
 
         // If a part of this segment overlaps with the given range
         int mid = getMid(ss, se);
-        return maxVal(RMQUtil(ss, mid, qs, qe, 2 * index + 1),
-                      RMQUtil(mid + 1, se, qs, qe, 2 * index + 2));
+
+        int leftSum =RMQUtil(ss, mid, qs, qe, 2 * index + 1);
+        int rightSum = RMQUtil(mid + 1, se, qs, qe, 2 * index + 2);
+
+        return (leftSum+rightSum)/(se-ss);
     }
 
     // Return minimum of elements in range from index qs (query
@@ -71,8 +75,10 @@ public class RangeMaximumQuery {
         // If there are more than one elements, then recur for left and
         // right subtrees and store the maximum of two values in this node
         int mid = getMid(ss, se);
-        st[si] = maxVal(constructSTUtil(arr, ss, mid, si * 2 + 1),
-                        constructSTUtil(arr, mid + 1, se, si * 2 + 2));
+
+        int leftSum = constructSTUtil(arr, ss, mid, si * 2 + 1);
+        int rightSum = constructSTUtil(arr, mid + 1, se, si * 2 + 2);
+        st[si] = (leftSum + rightSum)/(se-ss);
         return st[si];
     }
 
@@ -93,14 +99,14 @@ public class RangeMaximumQuery {
         constructSTUtil(arr, 0, n - 1, 0);
     }
 
-    public static int[] genomicRangeQuery(int [] S, int[] P, int[] Q) {
+    public static int[] genomicRangeQuery(int[] S, int[] P, int[] Q) {
 
         int n = S.length;
         int[] result = new int[P.length];
 
         // Build segment tree from given array
         constructST(S, n);
-
+        System.out.println(Arrays.toString(st));
         for (int i = 0; i < P.length; i++) {
             // P[i] Starting index of query range
             // Q[i] Ending index of query range
