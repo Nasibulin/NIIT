@@ -36,6 +36,7 @@ public class RangeSumQuery {
                      represented by current node, i.e., st[index]
         qs & qe  --> Starting and ending indexes of query range */
     static int RMQUtil(int ss, int se, int qs, int qe, int index) {
+
         // If segment of this node is a part of given range, then
         // return the min of the segment
         if (qs <= ss && qe >= se)
@@ -49,9 +50,10 @@ public class RangeSumQuery {
         int mid = getMid(ss, se);
 
         int leftSum =RMQUtil(ss, mid, qs, qe, 2 * index + 1);
+
         int rightSum = RMQUtil(mid + 1, se, qs, qe, 2 * index + 2);
 
-        return minVal(leftSum,rightSum);
+        return minVal(leftSum, rightSum);
     }
 
     // Return minimum of elements in range from index qs (query
@@ -82,7 +84,7 @@ public class RangeSumQuery {
 
         int leftSum = constructSTUtil(arr, ss, mid, si * 2 + 1);
         int rightSum = constructSTUtil(arr, mid + 1, se, si * 2 + 2);
-        st[si] = minVal(leftSum,rightSum);
+        st[si] = minVal(leftSum, rightSum);
         return st[si];
     }
 
@@ -106,13 +108,12 @@ public class RangeSumQuery {
     }
 
     public static int[] sumRangeQuery(int[] S, int[] P, int[] Q) {
-
+        System.out.println(Arrays.toString(S));
         int n = S.length;
         int[] result = new int[P.length];
 
         // Build segment tree from given array
         constructST(S, n);
-        System.out.println(Arrays.toString(S));
         System.out.println(Arrays.toString(st));
         for (int i = 0; i < P.length; i++) {
             // P[i] Starting index of query range
